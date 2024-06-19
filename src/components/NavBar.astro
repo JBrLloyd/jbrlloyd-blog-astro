@@ -1,5 +1,4 @@
 ---
-import HeaderLink from './HeaderLink.astro'
 import NavigationLink from './solid/blocks/NavigationLink.tsx'
 import { MobileMenu } from './solid/MobileMenu.tsx'
 import { sortedPrimaryStaticRoutes } from '../routes';
@@ -8,7 +7,7 @@ import { sortedPrimaryStaticRoutes } from '../routes';
 
 <nav class="flex flex-row gap-x-6 border-t h-14">
   <div class="relative md:hidden justify-normal self-center">
-    <MobileMenu client:only />
+    <MobileMenu client:only="solid-js" />
   </div>
   <div class="max-md:hidden self-center mx-auto h-full">
     <div class="text-lg select-none h-full inline-flex flex-row items-center align-middle">
@@ -19,7 +18,7 @@ import { sortedPrimaryStaticRoutes } from '../routes';
             <NavigationLink
               className="text-sm"
               href={route.link}
-              getCurrentPath={() => Astro.url.pathname}
+              getCurrentPath={() => Astro.url.pathname as string}
             >
               <div class="py-4 px-7">{route.text}</div>
             </NavigationLink>

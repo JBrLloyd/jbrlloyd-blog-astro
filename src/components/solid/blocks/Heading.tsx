@@ -34,6 +34,7 @@ export const Heading: ParentComponent<HeadingProps> = ({ size, className, ...pro
       return <h1 class={"text-3xl " + addedStyles} {...props}>{c()}</h1>
   }
 
+  // @ts-ignore: Unreachable code error
   assertUnreachable(size)
 }
 

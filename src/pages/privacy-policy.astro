@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import {Heading, Paragraph, BlockQuote } from "../components/solid/blocks";
+import {Heading, Paragraph } from "../components/solid/blocks";
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 
 const siteUrl = "https://jbrlloyd.dev/"
@@ -11,7 +11,7 @@ const siteUrl = "https://jbrlloyd.dev/"
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 >
-  <article className="leading-relaxed">
+  <article class="leading-relaxed">
     <Heading size="2xl">Privacy Policy</Heading>
     <Heading size="xl">Who we are</Heading>
     <Paragraph>Our website address is: <a href={siteUrl}><b>{siteUrl}</b></a>.</Paragraph>

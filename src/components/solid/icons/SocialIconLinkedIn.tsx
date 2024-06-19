@@ -10,6 +10,7 @@ const SocialIconLinkedIn: Component<IconProps> = ({ link }) => (
   <a href={link}>
     <img
         loading="lazy"
+        decoding="async"
         src={image.src}
         alt="LinkedIn Social Media Icon"
         class="text-transparent"

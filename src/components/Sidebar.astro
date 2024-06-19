@@ -14,7 +14,7 @@ import SocialIcon, { socialIcons } from './solid/icons/SocialIcon'
   <div class="relative py-8">
     <h4 class="border-b-2 border-salmon"><strong>FOLLOW ME</strong></h4>
     <div class="flex flex-row pt-3 justify-center">
-      {socialIcons.map(s => <SocialIcon socialType={s} className="mx-2 first:ml-0 last:mr-0" />)}
+      {socialIcons.map(s => <SocialIcon client:only="solid-js" socialType={s} className="mx-2 first:ml-0 last:mr-0" />)}
     </div>
   </div>
 </aside>

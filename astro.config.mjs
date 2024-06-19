@@ -11,6 +11,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), solidJs({ devtools: true}), tailwind()],
   output: "hybrid",
   adapter: cloudflare({
-    // imageService: 'cloudflare'
+    imageService: 'compile'
   })
 });

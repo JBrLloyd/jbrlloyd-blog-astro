@@ -4,9 +4,9 @@ import { trimTrailingSlash } from '../../../helpers/strings'
 
 export type NavigationLinkProps = {
   href: string
-  className: string | undefined
-  getCurrentPath: (() => string) | undefined
-  onClick: (() => void) | undefined
+  className?: string
+  getCurrentPath?: (() => string)
+  onClick?: (() => void)
 };
 
 export const NavigationLink: ParentComponent<NavigationLinkProps> = ({
@@ -40,7 +40,7 @@ export const NavigationLink: ParentComponent<NavigationLinkProps> = ({
   return (
     <a
       href={href}
-      onClick={onClick}
+      onclick={onClick}
       class={
         (className ? `${className} ` : '')
         + " hover:text-salmon-dark transition duration-300 delay-50"}

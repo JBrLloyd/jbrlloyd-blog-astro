@@ -10,6 +10,7 @@ const SocialIconInstagram: Component<IconProps> = ({ link }) => (
   <a href={link}>
     <img
         loading="lazy"
+        decoding="async"
         src={image.src}
         alt="Instagram Social Media Icon"
         class="text-transparent"

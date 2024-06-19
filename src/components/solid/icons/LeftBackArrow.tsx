@@ -16,6 +16,7 @@ export const LeftBackArrow: Component<LeftBackArrowProps> = ({ onClick, height, 
     <button onClick={onClick} class="w-fit h-fit p-1">
       <img
         loading="eager"
+        decoding="sync"
         src={image.src}
         alt="Go back"
         class="text-transparent"

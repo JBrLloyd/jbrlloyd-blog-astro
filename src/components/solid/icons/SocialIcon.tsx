@@ -23,6 +23,7 @@ const socialIconPicker = (socialType: SocialIconType) => {
       return <SocialIconInstagram link="https://www.instagram.com/jbrlloyd" />
   }
 
+  // @ts-ignore: Unreachable code error
   assertUnreachable(socialType);
 }
 

@@ -6,6 +6,7 @@ export const ProfileSummary: Component = () => (
     <div class="pb-2 border-solid rounded-full">
       <img
         loading="lazy"
+        decoding="async"
         src={profileImage.src}
         alt="Authour's profile"
         class="rounded-full shadow-2xl border-solid grayscale scale-x-[-1] bg-gray-500 text-transparent"

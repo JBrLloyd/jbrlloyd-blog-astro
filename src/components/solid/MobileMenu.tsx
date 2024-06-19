@@ -28,7 +28,7 @@ export const MobileMenu: Component = () => {
             <LeftBackArrow height={80} width={80} onClick={() => toggleSideDrawer()} />
           </div>
           {sortedAllStaticRoutes()
-            .map((route, idx) => (
+            .map((route) => (
               <NavigationLink
                 className="text-lg"
                 href={route.link}

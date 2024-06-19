@@ -10,6 +10,7 @@ const SocialIconGithub: Component<IconProps> = ({ link }) => (
   <a href={link}>
     <img
         loading="lazy"
+        decoding="async"
         src={image.src}
         alt="Github Social Media Icon"
         class="text-transparent"

@@ -8,14 +8,18 @@ const width: number = 35;
 
 const SocialIconFacebook: Component<IconProps> = ({ link }) => (
   <a href={link}>
-    <img
+    <picture>
+      <source srcset={image.src} type="image/webp" />
+      <img
         loading="lazy"
+        decoding="async"
         src={image.src}
         alt="Facebook Social Media Icon"
         class="text-transparent"
         height={height}
         width={width}
       />
+    </picture>
   </a>
 )
 

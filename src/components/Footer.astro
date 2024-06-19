@@ -12,7 +12,7 @@ const today = new Date();
 				<NavigationLink
 					href={route.link}
 					className="first:pt-0 last:pb-0 py-3 pr-14 text-sm border-b last:border-0"
-					getCurrentPath={() => Astro.url.pathname}
+					getCurrentPath={() => Astro.url.pathname as string}
 				>
 					&rarr;&nbsp;&nbsp;{route.text}
 				</NavigationLink>
