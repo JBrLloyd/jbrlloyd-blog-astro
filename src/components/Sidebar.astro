@@ -1,0 +1,20 @@
+---
+import { ProfileSummary } from "./solid/ProfileSummary.tsx"
+import NavigationLink from './solid/blocks/NavigationLink.tsx';
+import SocialIcon, { socialIcons } from './solid/icons/SocialIcon'
+---
+
+<aside class="divide-y flex flex-col">
+  <ProfileSummary />
+  <div class="items-center justify-center py-8">
+    <NavigationLink href="https://www.buymeacoffee.com/jbrlloyd">
+      <span class="delay-50 text-xl">☕ Buy me a coffee</span>
+    </NavigationLink>
+  </div>
+  <div class="relative py-8">
+    <h4 class="border-b-2 border-salmon"><strong>FOLLOW ME</strong></h4>
+    <div class="flex flex-row pt-3 justify-center">
+      {socialIcons.map(s => <SocialIcon socialType={s} className="mx-2 first:ml-0 last:mr-0" />)}
+    </div>
+  </div>
+</aside>

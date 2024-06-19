@@ -1,50 +1,41 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import PageLayout from '../layouts/PageLayout.astro';
+import {Heading, Paragraph, BlockQuote } from "../components/solid/blocks";
+import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<PageLayout
+	title={SITE_TITLE}
+	subTitle={SITE_SUBTITLE}
+	description={SITE_DESCRIPTION}
+>
+	<article className="leading-relaxed" slot="default">
+		<Heading size="2xl">Hey there 👋</Heading>
+		<Paragraph>
+			You've stumbled across a journey, come tag along!
+		</Paragraph>
+		<Paragraph>
+			I hope there&#39;s something for you because I really look forward to expanding what I know and my perspectives, and if you don&#39;t know I hope this can be a starting point in understanding!
+			<br/>
+
+			So should we get stuck right into it?
+		</Paragraph>
+
+		<Heading size="xl" className="pt-3">Personal & Professional Advice</Heading>
+		<Paragraph>
+			Don&#39;t be afraid to be wrong or else you&#39;ll never excel!
+			Accept your flaws and failures! If you think you&#39;re always correct, you&#39;re setting yourself up for failure.<br/>
+
+			Start with something, stick with it, see it until the end because you&#39;ll get more from the journey than the end goal, no matter what anyone says!
+		</Paragraph>
+
+		<Paragraph>
+			Or as a great man once said,
+		</Paragraph>
+
+		<BlockQuote
+			quote="You will never get to the end of the journey if you stop too shy a stone at every dog that barks."
+			authour="Winston Churchill"
+		/>
+	</article>
+</PageLayout>

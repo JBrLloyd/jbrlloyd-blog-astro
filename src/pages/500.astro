@@ -1,0 +1,16 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import {Heading, Paragraph } from "../components/solid/blocks";
+import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<PageLayout
+	title={SITE_TITLE}
+	subTitle={SITE_SUBTITLE}
+	description={SITE_DESCRIPTION}
+>
+	<section>
+		<Heading size="2xl">500: Error</Heading>
+    <Paragraph>There was an error. Please try again later.</Paragraph>
+	</section>
+</PageLayout>
