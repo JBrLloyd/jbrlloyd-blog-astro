@@ -9,3 +9,10 @@ export const trimTrailingSlash = (text: string) => {
 
   return result.endsWith('/') ? result.slice(0, result.length - 1) : result
 }
+
+const avgAdultReadingSpeedWordsPerMin = 225;
+
+export const avgReadingTimeMins = (text: string) => {
+  const words = text.trim().split(/\s+/).length;
+  return Math.ceil(words / avgAdultReadingSpeedWordsPerMin);
+}

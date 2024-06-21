@@ -4,6 +4,7 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../components/BlogPost.astro';
+import { avgReadingTimeMins } from '../../helpers/strings';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -16,6 +17,7 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await post.render();
+const readingTimeMins = avgReadingTimeMins(post.body);
 ---
 
 <PageLayout
@@ -23,7 +25,7 @@ const { Content } = await post.render();
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 >
-	<BlogPost {...post.data}>
+	<BlogPost readingTimeMins={readingTimeMins} {...post.data}>
 		<Content />
 	</BlogPost>
 </PageLayout>

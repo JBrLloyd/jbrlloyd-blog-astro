@@ -4,9 +4,10 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
 
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Heading from '../../components/solid/blocks/Heading';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 
@@ -21,7 +22,7 @@ const posts = (await getCollection('blog')).sort(
 		<ul>
 			{
 				posts.map((post) => (
-					<li>
+					<li class="py-6">
 						<a href={`/blog/${post.slug}/`}>
 							<img
 								class="
@@ -34,10 +35,12 @@ const posts = (await getCollection('blog')).sort(
 								alt=""
 							/>
 
-							<h4 class="title">{post.data.title}</h4>
-							<p class="date">
-								<FormattedDate date={post.data.pubDate} />
-							</p>
+							<div class="text-center">
+								<Heading size="2xl" className="pt-2 pb-0.5">{post.data.title}</Heading>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</div>
 
 						</a>
 					</li>

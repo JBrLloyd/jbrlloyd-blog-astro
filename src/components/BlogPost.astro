@@ -2,32 +2,46 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+import { Heading } from "./solid/blocks/Heading";
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+type Props = CollectionEntry<'blog'>['data'] & {
+	readingTimeMins: number
+};
+
+const { title, description, pubDate, updatedDate, heroImage, readingTimeMins } = Astro.props;
 ---
 
 <article class="[&>img]:max-h-80 [&>img]:relative">
-	<div class="hero-image">
-		{heroImage && <img class="" src={heroImage} alt="" />}
+	<div >
+		{heroImage && <img src={heroImage} alt="" />}
 	</div>
-	<div class="prose">
-		<div class="title">
-			<div class="date">
-				<FormattedDate date={pubDate} />
+	<div>
+		<div class="py-5">
+			<Heading size='3xl' className='py-2' >{title}</Heading>
+			<span>
+				<div class="inline">Published on <FormattedDate date={pubDate} /></div>
 				{
 					updatedDate && (
-						<div class="last-updated-on">
-							Last updated on <FormattedDate date={updatedDate} />
+						<div class="inline">
+							&nbsp;|&nbsp; Last updated on <FormattedDate date={updatedDate} />
 						</div>
 					)
 				}
-			</div>
-			<h1>{title}</h1>
+				{
+					readingTimeMins && (
+						<p class="inline">&nbsp;|&nbsp; Time to Read: {readingTimeMins} min{readingTimeMins >= 2 ? 's' : ''}</p>
+					)
+				}
+			</span>
 			<hr />
 		</div>
 
-		<div class="prose lg:prose-xl">
+		<div
+			class="
+				prose
+				prose-li:m-0
+				prose-ul:my-0.5
+				prose-ol:my-0.5">
 			<slot />
 		</div>
 	</div>
