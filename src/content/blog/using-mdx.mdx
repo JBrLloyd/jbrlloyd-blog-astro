@@ -19,8 +19,9 @@ Here is how you import and use a UI component inside of MDX.
 When you open this page in the browser, you should see the clickable button below.
 
 import NavigationLink from '../../components/solid/blocks/NavigationLink';
+export const onClickHandler = () => {alert("hi")};
 
-<NavigationLink href="#" onClick={() => alert('clicked!')}>
+<NavigationLink client:only="solid-js" href="#" onClick={onClickHandler}>
 	Embedded component in MDX
 </NavigationLink>
 

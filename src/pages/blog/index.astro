@@ -17,17 +17,29 @@ const posts = (await getCollection('blog')).sort(
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 >
-	<section>
+	<section class="flex justify-center">
 		<ul>
 			{
 				posts.map((post) => (
 					<li>
 						<a href={`/blog/${post.slug}/`}>
-							<img width={720} height={360} src={post.data.heroImage} alt="" />
+							<img
+								class="
+									max-h-64
+									relative
+									cursor-pointer
+									grayscale
+									filter
+									transition-all duration-300 hover:grayscale-0"
+								src={post.data.heroImage}
+								alt=""
+							/>
+
 							<h4 class="title">{post.data.title}</h4>
 							<p class="date">
 								<FormattedDate date={post.data.pubDate} />
 							</p>
+
 						</a>
 					</li>
 				))

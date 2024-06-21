@@ -31,26 +31,29 @@ const isSideDrawerOpen = false;
       <Header title={title} subTitle={subTitle} />
 
       <main class="flex flex-col lg:flex-row pb-3 justify-center">
+
         <div
           class="
             bg-white
             py-5
-            sm:relative
             sm:-mt-10 sm:mx-8
             sm:border-2 sm:border-solid
             grow
             min-w-full max-w-4xl
             sm:min-w-[36rem] md:min-w-[42rem]
-            self-start
             transition-all duration-300 delay-50"
         >
           <div class="sm:mx-6 max-sm:mx-4">
+
             <slot />
+
           </div>
         </div>
-        <div class="sm:p-5 max-w-xs relative grow-0 justify-center text-center lg:self-start self-center">
+
+        <div class="sm:p-5 max-w-xs relative grow-0 text-center lg:self-start self-center">
           <Sidebar />
         </div>
+
       </main>
 
       <footer class="flex-1 bg-white py-3 border-t">

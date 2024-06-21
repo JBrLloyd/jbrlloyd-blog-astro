@@ -37,10 +37,14 @@ export const NavigationLink: ParentComponent<NavigationLinkProps> = ({
     )
   }
 
+  const handleOnClick = () => {
+    if (onClick) onClick()
+  }
+
   return (
     <a
       href={href}
-      onclick={onClick}
+      onClick={handleOnClick}
       class={
         (className ? `${className} ` : '')
         + " hover:text-salmon-dark transition duration-300 delay-50"}
