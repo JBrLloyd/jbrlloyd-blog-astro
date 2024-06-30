@@ -6,10 +6,15 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Heading from '../../components/solid/blocks/Heading';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const isProd = import.meta.env.PROD;
 
+const posts = (await getCollection('blog'))
+	.filter(p => !isProd
+		|| p.slug === 'markdown-style-guide'
+		|| p.slug === 'using-mdx')
+	.sort((a, b) =>
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	);
 
 ---
 

@@ -11,7 +11,15 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const { title, description, pubDate, updatedDate, heroImage, readingTimeMins } = Astro.props;
 ---
 
-<article class="[&>img]:max-h-80 [&>img]:relative">
+<article
+	class="
+		[&>img]:max-h-80
+		[&>img]:relative
+		flex
+		flex-col
+		justify-center
+		items-center"
+>
 	<div >
 		{heroImage && <img src={heroImage} alt="" />}
 	</div>

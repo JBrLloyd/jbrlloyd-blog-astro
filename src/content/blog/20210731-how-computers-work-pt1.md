@@ -3,6 +3,10 @@ title: 'How Computers Work #1: Transistors'
 description: 'A series on uncovering the inner workings on how computers work, bit by bit.'
 pubDate: 'Jul 31 2021'
 heroImage: '/blog-placeholder-3.jpg'
+category: 'how things work'
+subCategory: 'computers'
+tags:
+  - tech
 ---
 
 This is part 1 of my How Computers Work series, a series to uncover how this magic box works:
@@ -10,7 +14,7 @@ This is part 1 of my How Computers Work series, a series to uncover how this mag
 1. Transistors
 2. Boolean Arithmetic and Logic Gates
 
-Transistors make up most of the brains of a computer so much so your computer has billions of them.  Modern transistors can also be called Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs), that rely purely on silicone and other elements. Present days transistors are getting smaller and smaller, so small in fact we're nearly getting into quantum physics. It's mentioned that 3nm is most likely the limit and beyond that it's more theoretically than anything else. Much lower than that and we're getting into into atomic and Bekenstein bound limits; keep in mind a silicon atom's diameter is 0.2nm. 
+Transistors make up most of the brains of a computer so much so your computer has billions of them.  Modern transistors can also be called Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs), that rely purely on silicone and other elements. Present days transistors are getting smaller and smaller, so small in fact we're nearly getting into quantum physics. It's mentioned that 3nm is most likely the limit and beyond that it's more theoretically than anything else. Much lower than that and we're getting into into atomic and Bekenstein bound limits; keep in mind a silicon atom's diameter is 0.2nm.
 
 Actual Transistor size inside of CPUs
 
@@ -46,7 +50,8 @@ We can combine these doping types to one piece of silicone to achieve not only a
 
 Get a better understanding with this video, next article in this series we'll go into why transistors are critical decision  makers!
 
-https://www.youtube.com/watch?v=7ukDKVHnac4
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7ukDKVHnac4?si=m0hM3B_De8uUUCs8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 #### Sources
 

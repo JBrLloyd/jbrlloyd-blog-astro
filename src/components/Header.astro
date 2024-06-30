@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import bannerImage from '../images/jbrlloyd-banner.png';
 import NavBar from './NavBar.astro'
 import NavigationLink from './solid/blocks/NavigationLink.tsx'
 
@@ -23,5 +26,11 @@ const { title, subTitle } = Astro.props;
 		</div>
 	</div>
 	<NavBar />
-	<figure class="bg-salmon h-48"></figure>
+	<figure class="bg-salmon h-48">
+		<Image
+			src={bannerImage}
+			height={192}
+			alt="A description of my image."
+		/>
+	</figure>
 </header>
