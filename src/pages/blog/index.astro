@@ -12,8 +12,7 @@ const posts = await getCollection('blog')
 const sortedPosts = posts.filter(p => {
 	if (!isProd) return true;
 
-	return p.slug === 'markdown-style-guide'
-		|| p.slug === 'using-mdx';
+	return p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx';
 	})
 	.sort((a, b) =>
 		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
