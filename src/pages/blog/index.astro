@@ -9,9 +9,9 @@ import Heading from '../../components/solid/blocks/Heading';
 const isProd = import.meta.env.PROD;
 
 const posts = (await getCollection('blog'))
-	.filter(p => !isProd
-		|| p.slug === 'markdown-style-guide'
-		|| p.slug === 'using-mdx')
+	.filter(p => isProd || (
+		p.slug === 'markdown-style-guide'
+		|| p.slug === 'using-mdx'))
 	.sort((a, b) =>
 		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 	);
