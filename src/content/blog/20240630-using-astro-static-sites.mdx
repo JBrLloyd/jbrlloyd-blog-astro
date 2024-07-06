@@ -1,0 +1,65 @@
+---
+draft: true
+title: 'Using Astro for Static Sites'
+description: 'Creating static websites through Astro web framework'
+pubDate: 'Jun 30 2024'
+heroImage: '/blog-placeholder-1.jpg'
+category: 'web development'
+subCategory: 'frameworks'
+tags:
+  - astro
+---
+
+[Astro](https://astro.build) is another JavaScript web framework for creating incredibly fast, sites.
+Astro is opinionated to optimize speed and improved SEO rating.
+It does this by rendering components server side, minimizing as much javascript required for the site
+as possible and improving the SEO by sending HTML before sending required javascript, if any.
+
+Additionally, Astro allows you to plugin and use any major UI framework such as react, vue, preact, svelte and solidjs.
+These frameworks are an opt-in adapters, which you install and add into Astro config.
+They work through calling the framework to create elements, taking the HTML output and passing it to Astro, and any
+client side javascript can be sent down to the client browser explicitly.
+An example of how we'd setup solidjs with client side javascript is as such:
+
+```js
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import solidJs from '@astrojs/solid-js';
+
+export default defineConfig({
+  site: 'https://example.com',
+  integrations: [solidJs()]
+});
+```
+
+```tsx
+// SolidJsCounter.tsx
+import { type Component, createSignal } from 'solid-js';
+
+export default const SolidJsCounter : Component = () => {
+  const [count, setCount] = createSignal(0);
+
+  return (
+    <>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count => count-1)}>Decrement</button>
+      &nbsp;
+      <button onClick={() => setCount(count => count+1)}>Increment</button>
+    </>
+  )
+}
+```
+
+```js
+// index.astro
+---
+import SolidJsCounter from './SolidJsCounter.tsx';
+---
+// Without client directive `client:load` no javascript will be sent to the browser
+// and therefore the on click will not do anything.
+<SolidJsCounter client:load />
+```
+
+
+However, the base framework requires developing the app with HTML & javascript (can have typescript) in a markdown like files.
+This file is written in a way

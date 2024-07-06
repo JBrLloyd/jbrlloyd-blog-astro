@@ -10,9 +10,10 @@ const isProd = import.meta.env.PROD;
 
 const posts = await getCollection('blog')
 const sortedPosts = posts
-	.filter(p => 
+	.filter(p =>
+		// Only apply filtering of posts to production app
 		!isProd
-		|| (p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx'))
+		|| (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx'))
 	.sort((a, b) =>
 		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 	);
