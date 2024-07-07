@@ -1,12 +1,13 @@
 ---
-title: 'How Computers Work #1: Transistors'
-description: 'A series on uncovering the inner workings on how computers work, bit by bit.'
-pubDate: 'Jul 31 2021'
-heroImage: '/blog-placeholder-3.jpg'
-category: 'how things work'
-subCategory: 'computers'
+title: "How Computers Work #1: Transistors"
+description: A series on uncovering the inner workings on how computers work, bit by bit.
+pubDate: 2021-07-31
+heroImage: /blog-placeholder-3.jpg
+category: how things work
+subCategory: computers
 tags:
   - tech
+  - blog
 ---
 
 This is part 1 of my How Computers Work series, a series to uncover how this magic box works:

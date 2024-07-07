@@ -1,0 +1,163 @@
+{
+  "main": {
+    "id": "1f575c0e8823611e",
+    "type": "split",
+    "children": [
+      {
+        "id": "0d1ebf176c3ae361",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5cff05f9c3e58aaa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9d40f033b369242d",
+    "type": "split",
+    "children": [
+      {
+        "id": "d2980a4d4e55c00d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9ee8155cc70a303f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c9b9c3a87387e2bb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d619cae1362e462d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e5a287e02f7acba0",
+    "type": "split",
+    "children": [
+      {
+        "id": "6381e3b85dc31b56",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c3e4c3f2cda893b1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f7706968f85fd146",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "368cd5b0d40bb6dc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "73a6b1a7073328bd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "5cff05f9c3e58aaa",
+  "lastOpenFiles": [
+    "blog/20240630-using-astro-static-sites.mdx",
+    "blog/markdown-style-guide.md",
+    "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+    "Pasted image 20240707212732.png",
+    "templates/blog-template.md",
+    "blog/20210731-how-computers-work-pt1.md",
+    "blog/20200526-must-watch-tech-talks.md",
+    "blog/using-mdx.mdx",
+    "blog/test.md",
+    "templates",
+    "Welcome.md"
+  ]
+}

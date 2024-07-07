@@ -1,0 +1,35 @@
+---
+draft: false
+title: The Fall & Resurgence of Server Side
+description: Understanding of why Server Side Rendered (SSR) web applications fell and why hybrid is becoming popular
+pubDate: 2024-02-02
+heroImage: /blog-placeholder-2.jpg
+category: web development
+subCategory: frontend
+tags:
+  - blog
+  - web-development
+  - frontend
+---
+Many web developers have been in the world of server side render sites using PHP (think WordPress), where the entire HTML document is generated and served from a server, these document would include some client side JavaScript (JS), Cascading Style Sheets (CSS) and instruct to download other assets such as fonts, images, etc. But more recently we've had the surge of heavier static client side sites, which allowed web developers to take advantage of the more powerful devices such as mobiles, without having heavy servers. This was not only cost efficient for the app creators to host their applications but also allowed for a new wave of ideas such as Backend for Frontend (BFF), allowing reusable backend APIs to be built which could serve a browser site or mobile apps, and Single Page Applications (SPAs), where sites could avoid routed pages and instead update the client side to change the user interface (UI) to seem like you were navigating to a new page, but instead re-rendering the entire DOM, which allowed state to remain cached and faster navigating and new screen display.
+
+However, as these purely client side single page apps have grown in popularity, they have lead to new performance issues and non-ideal solutions where apps take longer to load, as they require downloading an incredibly minimal HTML document, then a lot of JavaScript for the UI framework, bootstrapping it and then downloading all the application data required before rendering everything on the client's browser such as lists from data returned from an API. This can take a lot longer to display components and elements on the page than just sending a fully complete HTML document from a server, heightened if your APIs are slow. Some performance optimisation can be made by chunking out your JS into smaller bundles which can be downloaded as needed or using prefetching to speculatively download data based on user behaviour and where the user had navigated to.
+
+Despite this, initial loading times of these apps cannot be avoided and as Google search engine rank sites by relevancy, user experience (UX), site speed, accessibility and other aspects of the site, speed of loading is important for Search Engine Results Pages (SERPs) ordering/ranking, and therefore increased visibility and traffic. Site load times are also incredibly important for user retention, which has been noted an ex-Amazon employee, Greg Linden, stating there was an assumed correlation with a 100ms increased latency had seen a 1% loss of profit. Although this correlation is unsubstantiated, as there are many reasons that could impact the reduction of sales, making it impossible to be accurately measurable, nevertheless, it raises a plausible correlation.
+
+Either way, we know how important the user experience is to grow, retain and improve SEO, so how can we improve the user experience on our web apps? Well there are many ways we can improve the experience, such as:
+- Improved speed of display and reactiveness, as users may think the site is not working or leave the app out of frustration - We can do this by sending the important parts of the site first, the core HTML & CSS first before JavaScript and assets such as images, fronts, etc.
+- Creating skeleton elements to build out the overall greyed out layout and style of a component, whilst the text and images fill out asynchronously - this allows the user know that the site is working on it and loading, whilst still allowing other parts of the app to be interacted with. Suspense boundaries have become well used in frontend frameworks like React, Vue, Svelte, as a fallback whilst asynchronously loading.
+- Adding more accessibility for those who may have a disability, requiring the use of screen readers and other assistive technologies, and SEO ranking.
+- Chunking and streaming - chunking your JavaScript into smaller downloadable and executable bundles which can be streamed over time as needed or prefetched.
+- Using a hybrid of both client side rendering (CSR) and server side rendering (SSR) components, using server side when you need to fetch data from a database or an another API or another resource. This allows you to cache the result and sending the elements down as required, cutting down the uncertainty of the user's device connection and another server.
+
+React first introduced SSR components in 2020 and has since been experimental, however, NextJS has made it stable to use the hybrid CSR and SSR approach, additionally, it's one of the most popular technology according to [State of JS](https://stateofjs.com/en-US/). With NextJS's implementation we can send pre-rendered components to the client's browser with minimal or no JS which don't need to be hydrated. However, these components don't have access to client side state, meaning hooks like `useState` and `useEffect` will not work, however, these components should not need to do this and will be quicker to load and be interactive than client side components, improving core web vitals and improving search engine result rankings. The [Core Web Vitals metrics](https://developers.google.com/search/docs/appearance/core-web-vitals) provided by Google are:
+> - `Largest Contentful Paint (LCP)`: Measures loading performance. To provide a good user experience, strive to have LCP occur within the first 2.5 seconds of the page starting to load.
+> - `Interaction To Next Paint (INP)`: Measures responsiveness. To provide a good user experience, strive to have an INP of less than 200 milliseconds.
+> - `Cumulative Layout Shift (CLS)`: Measures visual stability. To provide a good user experience, strive to have a CLS score of less than 0.1.
+
+React's introduction made creating single page application's simple, handling bindings between HTML elements and reactive JavaScript events, however, another important aspect it revolutionised was creating smaller reusable components which contained scoped elements and JavaScript, not only making it more easily testable, but also creating small internally scoped state which prevented error proneness of some area of the app breaking another area unknowingly. On top of this, having the state and JavaScript internally in one area prevents mishaps of a global accessing selector, such as JQuery, from having duplicate events attached to a single element.
+
+### Conclusion
+Server side rendering hybrid with client side rendering is becoming more well support and this can approach could have some incredible performance gains compare to traditional CSR or SSR. This will also mean improved search engine result rankings for those sites adapting and you don't even need to move away from your standard React app to realise these gains, just to be smart where you need server side vs client side.

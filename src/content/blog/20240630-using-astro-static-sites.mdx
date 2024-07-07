@@ -1,25 +1,25 @@
 ---
 draft: true
-title: 'Using Astro for Static Sites'
-description: 'Creating static websites through Astro web framework'
-pubDate: 'Jun 30 2024'
-heroImage: '/blog-placeholder-1.jpg'
-category: 'web development'
-subCategory: 'frameworks'
+title: Using Astro for Static Sites
+description: Creating static websites through Astro web framework
+pubDate: 2024-06-30
+heroImage: /blog-placeholder-1.jpg
+category: web development
+subCategory: frameworks
 tags:
   - astro
+  - blog
+  - frontend
+  - web-development
 ---
+[Astro](https://astro.build) is another JavaScript (JS) web framework for creating incredibly fast, sites.
+Astro is opinionated to optimise speed and improved SEO (Search Engine Optimisation) rating.
+It does this by rendering components server side, minimising client side JS required for the site as possible and improving the SEO by sending HTML before sending required JavaScript, if any. I've talked about the performance gains from a hybrid of client side and server side rendering before in a previous blog post [The Fall & Resurgence of Server Side](../20240202-the-fall-and-resurgence-of-server-side)
 
-[Astro](https://astro.build) is another JavaScript web framework for creating incredibly fast, sites.
-Astro is opinionated to optimize speed and improved SEO rating.
-It does this by rendering components server side, minimizing as much javascript required for the site
-as possible and improving the SEO by sending HTML before sending required javascript, if any.
+Astro allows you to plugin and use any major UI framework such as React, Vue, Preact, Svelte and SolidJs.
+These frameworks are an opt-in integrations, which you install and add into Astro config, this integrations will use the specific framework's renderer to create elements. Then taking the HTML output and passing it to Astro to render, this allows any choice of frontend frameworks, which Astro has integrations built for. Lastly, any client side JS can be sent down to the client browser explicitly, this also follows an opt-in approach to prevent excessive JS being sent to the browser, taking longer for the site to load.
 
-Additionally, Astro allows you to plugin and use any major UI framework such as react, vue, preact, svelte and solidjs.
-These frameworks are an opt-in adapters, which you install and add into Astro config.
-They work through calling the framework to create elements, taking the HTML output and passing it to Astro, and any
-client side javascript can be sent down to the client browser explicitly.
-An example of how we'd setup solidjs with client side javascript is as such:
+An example of how we'd setup SolidJs with client side JavaScript is as such:
 
 ```js
 // astro.config.mjs
@@ -28,7 +28,7 @@ import solidJs from '@astrojs/solid-js';
 
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [solidJs()]
+  integrations: [ solidJs() ] // Note this integration
 });
 ```
 
@@ -42,9 +42,9 @@ export default const SolidJsCounter : Component = () => {
   return (
     <>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count => count-1)}>Decrement</button>
+      <button onClick={() => setCount(count => count - 1)}>Decrement</button>
       &nbsp;
-      <button onClick={() => setCount(count => count+1)}>Increment</button>
+      <button onClick={() => setCount(count => count + 1)}>Increment</button>
     </>
   )
 }
@@ -53,6 +53,7 @@ export default const SolidJsCounter : Component = () => {
 ```js
 // index.astro
 ---
+// Server side JavaScript
 import SolidJsCounter from './SolidJsCounter.tsx';
 ---
 // Without client directive `client:load` no javascript will be sent to the browser
@@ -61,5 +62,5 @@ import SolidJsCounter from './SolidJsCounter.tsx';
 ```
 
 
-However, the base framework requires developing the app with HTML & javascript (can have typescript) in a markdown like files.
+However, the base framework requires developing the app with HTML & JavaScript (can have TypeScript) in markdown like files.
 This file is written in a way
