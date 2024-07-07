@@ -27,6 +27,11 @@ const sortedPosts = posts
 >
 	<section class="flex justify-center">
 		<ul>
+			<li class="py-6 mx-auto">
+				<p class="text-center">
+					👀 <b>Upcoming Post:</b> Setting up Dapr & NATS Locally For Fast Distributed Messaging 👀
+				</p>
+			</li>
 			{
 				sortedPosts.map((post) => (
 					<li class="py-6">
@@ -37,7 +42,7 @@ const sortedPosts = posts
 									relative
 									cursor-pointer
 									filter
-									transition-all duration-150 hover:saturate-[1.85]"
+									transition-all duration-150 hover:saturate-[1.85] mx-auto"
 								src={post.data.heroImage}
 								alt=""
 							/>
