@@ -24,20 +24,22 @@ export const MobileMenu: Component = () => {
           class={"absolute w-52 -left-52 sm:w-64 sm:-left-64 h-full bg-white duration-300 ease-out transition-all flex flex-col"
             + (isSideDrawerOpen() ? ' translate-x-full' : '')}
         >
-          <div class="self-end mr-3 pt-3">
+          {/* <div class="self-end mr-3 pt-3">
             <LeftBackArrow height={40} width={40} onClick={() => toggleSideDrawer()}>
               Close Menu
             </LeftBackArrow>
-          </div>
+          </div> */}
           {sortedAllStaticRoutes()
             .map((route) => (
               <NavigationLink
-                className="text-lg"
+                className="group text-lg"
                 href={route.link}
                 getCurrentPath={() => window.location.pathname}
                 onClick={() => toggleSideDrawer()}
               >
-                <div class="py-4 px-7">{route.text}</div>
+                <div class="py-4 px-7">
+                  <p class="text-primary text-opacity-25">{route.text}</p>
+                </div>
               </NavigationLink>
             ))
           }

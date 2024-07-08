@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "file": "blog/20210731-how-computers-work-pt1.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "file": "blog/20210731-how-computers-work-pt1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md",
+                "file": "blog/20210731-how-computers-work-pt1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/20240202-the-fall-and-resurgence-of-server-side.md"
+                "file": "blog/20210731-how-computers-work-pt1.md"
               }
             }
           }
@@ -148,13 +148,13 @@
   },
   "active": "5cff05f9c3e58aaa",
   "lastOpenFiles": [
+    "blog/20200526-must-watch-tech-talks.md",
+    "blog/20240202-the-fall-and-resurgence-of-server-side.md",
     "blog/20240630-using-astro-static-sites.mdx",
     "blog/markdown-style-guide.md",
-    "blog/20240202-the-fall-and-resurgence-of-server-side.md",
     "Pasted image 20240707212732.png",
     "templates/blog-template.md",
     "blog/20210731-how-computers-work-pt1.md",
-    "blog/20200526-must-watch-tech-talks.md",
     "blog/using-mdx.mdx",
     "blog/test.md",
     "templates",

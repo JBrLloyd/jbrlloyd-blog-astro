@@ -9,7 +9,6 @@ tags:
   - tech
   - blog
 ---
-
 This is part 1 of my How Computers Work series, a series to uncover how this magic box works:
 
 1. Transistors
@@ -51,7 +50,18 @@ We can combine these doping types to one piece of silicone to achieve not only a
 
 Get a better understanding with this video, next article in this series we'll go into why transistors are critical decision  makers!
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7ukDKVHnac4?si=m0hM3B_De8uUUCs8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  loading="lazy"
+  style="inline-style: 100%; block-size: auto; aspect-ratio: 16/9;"
+  src="https://www.youtube-nocookie.com/embed/7ukDKVHnac4?si=m0hM3B_De8uUUCs8"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
 
 
 #### Sources
