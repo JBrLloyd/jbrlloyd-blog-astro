@@ -1,6 +1,5 @@
 import { type Component, Suspense, lazy } from "solid-js"
 import { SvgIcon } from "./SvgIcon";
-import HomeIcon from "../../../images/icon_nav_home.svg"
 
 export const navIcons = [
   'home',
