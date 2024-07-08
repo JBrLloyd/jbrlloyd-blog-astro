@@ -4,6 +4,7 @@ import { sortedAllStaticRoutes } from '../../routes'
 import { LeftBackArrow } from './icons/LeftBackArrow'
 import { NavigationLink } from './blocks/NavigationLink'
 import { HamburgerMenuButton } from './HamburgerMenuButton'
+import { NavIcon } from "./icons/NavIcon"
 
 export const MobileMenu: Component = () => {
   const [isSideDrawerOpen, setIsSideDrawerOpen] = createSignal(false);
@@ -32,14 +33,13 @@ export const MobileMenu: Component = () => {
           {sortedAllStaticRoutes()
             .map((route) => (
               <NavigationLink
-                className="group text-lg"
+                className="text-lg py-4 pl-6 inline-block"
                 href={route.link}
                 getCurrentPath={() => window.location.pathname}
                 onClick={() => toggleSideDrawer()}
               >
-                <div class="py-4 px-7">
-                  <p class="text-primary text-opacity-25">{route.text}</p>
-                </div>
+                {/* <NavIcon iconType="home" /> */}
+                {route.text}
               </NavigationLink>
             ))
           }

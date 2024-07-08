@@ -1,7 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
-import bannerImage from '../images/jbrlloyd-banner.png';
 import NavBar from './NavBar.astro'
 import NavigationLink from './solid/blocks/NavigationLink.tsx'
 
@@ -14,8 +11,8 @@ const { title, subTitle } = Astro.props;
 
 ---
 
-<header>
-	<div class="py-4 sm:py-8 mx-14 max-sm:sticky flex flex-col justify-center items-center">
+<header class="max-sm:top-0 max-sm:sticky z-50 bg-white">
+	<div class="py-4 sm:py-8 mx-14 flex flex-col justify-center items-center">
 		<div class="max-w-[75%] text-center">
 			<h1 class="text-4xl font-bold max-sm:text-2xl transition-all duration-300">
 				<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string}>
@@ -26,11 +23,4 @@ const { title, subTitle } = Astro.props;
 		</div>
 	</div>
 	<NavBar />
-	<figure class="bg-salmon h-48 flex justify-center">
-		<Image
-			src={bannerImage}
-			class="h-full w-auto"
-			alt="A description of my image."
-		/>
-	</figure>
 </header>
