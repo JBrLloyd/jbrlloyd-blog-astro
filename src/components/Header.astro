@@ -11,16 +11,18 @@ const { title, subTitle } = Astro.props;
 
 ---
 
-<header class="max-sm:top-0 max-sm:sticky z-50 bg-white">
-	<div class="py-4 sm:py-8 mx-14 flex flex-col justify-center items-center">
-		<div class="max-w-[75%] text-center">
-			<h1 class="text-4xl font-bold max-sm:text-2xl transition-all duration-300">
-				<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string}>
+<header class="max-md:top-0 max-md:sticky z-50 bg-white">
+	<div class="py-1.5 sm:py-3 md:pt-8 flex md:flex-col md:flex-nowrap">
+		<div class="flex flex-col items-center max-md:order-2 max-md:m-auto max-md:-ml-16 max-sm:max-w-[60%]">
+			<h1 class="text-4xl text-center font-bold max-sm:text-2xl transition-all duration-300">
+				<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string} >
 					{title}
 				</NavigationLink>
 			</h1>
-			{subTitle && <p class="text-base pt-4 italic subpixel-antialiased max-sm:hidden">{subTitle}</p>}
+			{subTitle && <p class="text-base pt-3.5 italic subpixel-antialiased max-sm:hidden border-b px-3">{subTitle}</p>}
+		</div>
+		<div class="max-md:mr-auto">
+			<NavBar />
 		</div>
 	</div>
-	<NavBar />
 </header>

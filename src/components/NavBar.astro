@@ -5,12 +5,12 @@ import { sortedPrimaryStaticRoutes } from '../routes';
 
 ---
 
-<nav class="flex flex-row gap-x-6 border-t h-14">
-  <div class="relative md:hidden justify-normal self-center">
+<nav class="flex flex-row gap-x-6">
+  <div class="relative md:hidden justify-normal self-center max-md:pl-8 max-sm:pl-2">
     <MobileMenu client:only="solid-js" />
   </div>
-  <div class="max-md:hidden self-center mx-auto h-full">
-    <div class="text-lg select-none h-full inline-flex flex-row items-center align-middle">
+  <div class="max-md:hidden self-center mx-auto">
+    <div class="text-lg select-none inline-flex flex-row items-center align-middle mt-2">
       <div>&lsaquo;</div>
       {sortedPrimaryStaticRoutes()
         .map((route, idx, sortedRoutes) => (
@@ -20,7 +20,7 @@ import { sortedPrimaryStaticRoutes } from '../routes';
               href={route.link}
               getCurrentPath={() => Astro.url.pathname as string}
             >
-              <div class="py-4 px-7">{route.text}</div>
+              <div class="px-7 py-2">{route.text}</div>
             </NavigationLink>
             {(idx + 1 !== sortedRoutes.length) && <div>&#8260;</div>}
           </>

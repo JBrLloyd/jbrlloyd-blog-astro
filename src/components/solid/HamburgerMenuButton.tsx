@@ -8,7 +8,7 @@ type HamburgerMenuButtonProps = {
 
 export const HamburgerMenuButton: Component<HamburgerMenuButtonProps> = ({ isOpen, onClick, className }) => (
   <button
-    class={`relative first-letter:text-gray-500 w-16 h-10 focus:outline-none ${className}`}
+    class={`relative first-letter:text-gray-500 w-16 h-10 focus:outline-none shadow-md border-2 border-grey-50 rounded-md p-8 max-sm:p-6 ${className}`}
     onClick={onClick}
   >
     <div class="block absolute w-9 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">

@@ -13,6 +13,7 @@ const { title, description, pubDate, updatedDate, heroImage, readingTimeMins } =
 
 <article
 	class="
+		w-full
 		[&>img]:max-h-80
 		[&>img]:relative
 		flex
@@ -20,40 +21,37 @@ const { title, description, pubDate, updatedDate, heroImage, readingTimeMins } =
 		justify-center
 		items-center"
 >
-	<div >
-		{heroImage && <img src={heroImage} alt="" />}
+	{heroImage && <img src={heroImage} alt="" />}
+	<div class="py-5">
+		<Heading size='3xl' className='py-2' >{title}</Heading>
+		<span>
+			<div class="inline">Published on <FormattedDate date={pubDate} /></div>
+			{
+				updatedDate && (
+					<div class="inline">
+						&nbsp;|&nbsp; Last updated on <FormattedDate date={updatedDate} />
+					</div>
+				)
+			}
+			{
+				readingTimeMins && (
+					<p class="inline">&nbsp;|&nbsp; Time to Read: {readingTimeMins} min{readingTimeMins >= 2 ? 's' : ''}</p>
+				)
+			}
+		</span>
+		<hr />
 	</div>
-	<div>
-		<div class="py-5">
-			<Heading size='3xl' className='py-2' >{title}</Heading>
-			<span>
-				<div class="inline">Published on <FormattedDate date={pubDate} /></div>
-				{
-					updatedDate && (
-						<div class="inline">
-							&nbsp;|&nbsp; Last updated on <FormattedDate date={updatedDate} />
-						</div>
-					)
-				}
-				{
-					readingTimeMins && (
-						<p class="inline">&nbsp;|&nbsp; Time to Read: {readingTimeMins} min{readingTimeMins >= 2 ? 's' : ''}</p>
-					)
-				}
-			</span>
-			<hr />
-		</div>
 
-		<div
-			class="
-				prose
-				prose-li:m-0
-				prose-ul:my-0.5
-				prose-ol:my-0.5"
-		>
+	<div
+		class="
+			w-full
+			prose
+			prose-li:m-0
+			prose-ul:my-0.5
+			prose-ol:my-0.5"
+	>
 
-				<slot />
+			<slot />
 
-		</div>
 	</div>
 </article>
