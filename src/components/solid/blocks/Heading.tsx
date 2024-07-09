@@ -8,7 +8,7 @@ export type HeadingProps = {
   itemProp?: string
 }
 
-const commonStyles = "font-bold pb-3"
+const commonStyles = "font-bold"
 
 export const Heading: ParentComponent<HeadingProps> = ({ size, className, ...props }) => {
   const c = children(() => props.children);
@@ -17,7 +17,7 @@ export const Heading: ParentComponent<HeadingProps> = ({ size, className, ...pro
     return null
   }
 
-  const addedStyles = className ? `${commonStyles} ${className}` : commonStyles;
+  const addedStyles = className ? `${commonStyles} ${className}` : `${commonStyles} pb-3`;
 
   switch (size) {
     case 'sm':

@@ -50,9 +50,9 @@ const sortedPosts = posts
 							/>
 
 							<div class="text-center px-4 py-1 pb-3">
-								<Heading size="2xl" className="pt-2 pb-0.5">{post.data.title}</Heading>
-								<FormattedDate date={post.data.pubDate} />
-								<p>
+								<Heading size="2xl" className="pt-2">{post.data.title}</Heading>
+								<em><FormattedDate date={post.data.pubDate} /></em>
+								<p class="pt-2.5">
 									{post.data.description}
 								</p>
 							</div>
