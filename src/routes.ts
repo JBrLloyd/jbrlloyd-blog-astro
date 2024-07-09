@@ -6,11 +6,13 @@ const SecondaryRouteGrade = 2 as const
 type RouteGrade = typeof PrimaryRouteGrade | typeof SecondaryRouteGrade
 
 export type Route = {
-  text: string
+  text: RouteText
   link: string
   grade: RouteGrade,
   order: number,
 }
+
+export type RouteText = 'Home' | 'Blog' | 'About' | 'Privacy Policy'
 
 export const staticRoutes: Route[] = [
   {
@@ -37,7 +39,7 @@ export const staticRoutes: Route[] = [
     grade: SecondaryRouteGrade,
     order: 50,
   },
-]
+] as const;
 
 export const routeSortCompare = (routeA: Route, routeB: Route) => {
   if (routeA.order === routeB.order) {

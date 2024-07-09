@@ -1,10 +1,17 @@
 import { type Component, createSignal } from "solid-js"
 
-import { sortedAllStaticRoutes } from '../../routes'
+import { sortedAllStaticRoutes, type RouteText } from '../../routes'
 import { LeftBackArrow } from './icons/LeftBackArrow'
 import { NavigationLink } from './blocks/NavigationLink'
 import { HamburgerMenuButton } from './HamburgerMenuButton'
-import { NavIcon } from "./icons/NavIcon"
+import { NavIcon, type NavIconType } from "./icons/NavIcon"
+
+const RouteNavIconTypeMap: Record<RouteText, NavIconType> = {
+  'Home': 'home',
+  'About': 'about',
+  'Blog': 'blogs',
+  'Privacy Policy': 'userPrivacy'
+}
 
 export const MobileMenu: Component = () => {
   const [isSideDrawerOpen, setIsSideDrawerOpen] = createSignal(false);
@@ -33,13 +40,13 @@ export const MobileMenu: Component = () => {
           {sortedAllStaticRoutes()
             .map((route) => (
               <NavigationLink
-                className="text-lg py-4 pl-6 inline-block"
+                className="text-lg py-4 pl-3 first:pt-8"
                 href={route.link}
                 getCurrentPath={() => window.location.pathname}
                 onClick={() => toggleSideDrawer()}
               >
-                {/* <NavIcon iconType="home" /> */}
-                {route.text}
+                <NavIcon iconType={RouteNavIconTypeMap[route.text]} className="inline-block" />
+                <p class="pl-3 inline-block">{route.text}</p>
               </NavigationLink>
             ))
           }
