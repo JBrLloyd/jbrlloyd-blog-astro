@@ -1,7 +1,7 @@
 import { type Component, createSignal } from "solid-js"
 
 import { sortedAllStaticRoutes, type RouteText } from '../../routes'
-import { LeftBackArrow } from './icons/LeftBackArrow'
+// import { LeftBackArrow } from './icons/LeftBackArrow'
 import { NavigationLink } from './blocks/NavigationLink'
 import { HamburgerMenuButton } from './HamburgerMenuButton'
 import { NavIcon, type NavIconType } from "./icons/NavIcon"

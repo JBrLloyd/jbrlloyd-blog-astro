@@ -22,7 +22,7 @@ const { title, description, pubDate, updatedDate, heroImage, readingTimeMins } =
 		items-center"
 >
 	{heroImage && <img src={heroImage} alt="" />}
-	<div class="py-5">
+	<div class="py-5 text-center">
 		<Heading size='3xl' className='py-2' >{title}</Heading>
 		<span>
 			<div class="inline">Published on <FormattedDate date={pubDate} /></div>
