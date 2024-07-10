@@ -8,24 +8,25 @@ type HamburgerMenuButtonProps = {
 
 export const HamburgerMenuButton: Component<HamburgerMenuButtonProps> = ({ isOpen, onClick, className }) => (
   <button
-    class={`relative first-letter:text-gray-500 w-16 h-10 focus:outline-none shadow-md border-2 border-grey-50 rounded-md p-8 max-sm:p-6 ${className}`}
+    title="Menu Icon"
+    class={`first-letter:text-gray-500 focus:outline-none shadow-sm sm:shadow-md border-2 border-grey-50 rounded-md p-3 max-sm:p-2 ${className}`}
     onClick={onClick}
   >
-    <div class="block absolute w-9 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div class="flex flex-col flex-nowrap items-center justify-center align-middle w-[32px] h-[30px]">
       <span
         aria-hidden="true"
-        class={"block absolute h-1 w-8 bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
-          + (isOpen ? ' rotate-45 bg-salmon-dark' : ' -translate-y-2')}
+        class={"block h-[5px] w-[32px] bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
+          + (isOpen ? ' rotate-45 bg-salmon-dark' : ' -translate-y-[4px]')}
       ></span>
       <span
         aria-hidden="true"
-        class={"block absolute h-1 w-8 bg-current rounded-full transform transition duration-300 ease-in-out"
+        class={"block h-[5px] w-[32px] bg-current rounded-full transform transition duration-300 ease-in-out"
           + (isOpen ? ' opacity-0' : '')}
       ></span>
       <span
         aria-hidden="true"
-        class={"block absolute h-1 w-8 bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
-          + (isOpen ? ' -rotate-45 bg-salmon-dark' : ' translate-y-2')}
+        class={"block h-[5px] w-[32px] bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
+          + (isOpen ? ' -rotate-45 bg-salmon-dark' : ' translate-y-[4px]')}
       ></span>
     </div>
   </button>

@@ -29,7 +29,7 @@ export const MobileMenu: Component = () => {
           onClick={() => toggleSideDrawer()}
         ></div>
         <div
-          class={"absolute w-52 -left-52 sm:w-64 sm:-left-64 h-full bg-white duration-300 ease-out transition-all flex flex-col rounded-r-lg"
+          class={"absolute w-44 -left-44 sm:w-56 sm:-left-56 h-full bg-white duration-300 ease-out transition-all flex flex-col rounded-r-lg"
             + (isSideDrawerOpen() ? ' translate-x-full' : '')}
         >
           {/* <div class="self-end mr-3 pt-3">

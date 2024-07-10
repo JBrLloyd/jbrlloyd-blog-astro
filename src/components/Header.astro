@@ -11,8 +11,10 @@ const { title, subTitle } = Astro.props;
 
 ---
 
-<header class="max-md:top-0 max-md:sticky z-50 bg-white">
-	<div class="py-1.5 sm:py-3 md:pt-8 flex md:flex-col md:flex-nowrap">
+<header
+	id="header"
+	class="max-md:top-0 max-md:sticky z-10 py-1.5 sm:py-3 md:pt-8 flex md:flex-col md:flex-nowrap items-center bg-white max-md:data-[scrolled]:shadow-[0_10px_20px_10px_rgba(75,75,75,.25)] transition-shadow ease-in">
+	<!-- <div id="header-container" class="py-1.5 sm:py-3 md:pt-8 flex md:flex-col md:flex-nowrap items-center bg-white active:shadow-[0_10px_20px_10px_rgba(75,75,75,.25)]"> -->
 		<div class="flex flex-col items-center max-md:order-2 max-md:m-auto max-md:-ml-16 max-sm:max-w-[60%]">
 			<h1 class="text-4xl text-center font-bold max-sm:text-2xl transition-all duration-300">
 				<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string} >
@@ -24,5 +26,19 @@ const { title, subTitle } = Astro.props;
 		<div class="max-md:mr-auto">
 			<NavBar />
 		</div>
-	</div>
+	<!-- </div> -->
 </header>
+
+<script>
+	const header = document.getElementById("header");
+	const intercept = document.createElement("div");
+
+	intercept.setAttribute("data-observer-intercept", "");
+	header?.before(intercept);
+
+	const observer = new IntersectionObserver(([entry]) => {
+		header?.toggleAttribute("data-scrolled", !entry.isIntersecting);
+	});
+
+	observer.observe(intercept);
+</script>
