@@ -51,8 +51,6 @@ We can combine these doping types to one piece of silicone to achieve not only a
 Get a better understanding with this video, next article in this series we'll go into why transistors are critical decision  makers!
 
 <iframe
-  width="560"
-  height="315"
   loading="lazy"
   style="inline-style: 100%; block-size: auto; aspect-ratio: 16/9;"
   src="https://www.youtube-nocookie.com/embed/7ukDKVHnac4?si=m0hM3B_De8uUUCs8"
@@ -68,7 +66,7 @@ Get a better understanding with this video, next article in this series we'll go
 
 - Transistor Full Documentary - https://www.youtube.com/watch?v=U4XknGqr3Bo
 - History of the telephone - https://en.wikipedia.org/wiki/History_of_the_telephone
-- Elisha Gray and Alexander Bell telephone controversy - https://en.wikipedia.org/wiki/Elisha_Gray_and_Alexander_Bell_telephone_controversy
+- Elisha Gray and Alexander Bell telephone controversy - [https://en.wikipedia.org/wiki/Elisha-Gray-and-Alexander-Bell-telephone-controversy](https://en.wikipedia.org/wiki/Elisha_Gray_and_Alexander_Bell_telephone_controversy)
 - How the Bell's first electric telephone worked - https://www.howitworksdaily.com/how-bells-telephone-worked
 - Vacuum Tube - https://en.wikipedia.org/wiki/Vacuum_tube
 - AT&T Archives: A Modern Aladdin's Lamp, about vacuum tubes,1940 - https://www.youtube.com/watch?v=_-JzxX75oYc

@@ -20,7 +20,7 @@ import { sortedPrimaryStaticRoutes } from '../routes';
               href={route.link}
               getCurrentPath={() => Astro.url.pathname as string}
             >
-              <div class="px-7 py-2">{route.text}</div>
+              <div class="px-7 py-3">{route.text}</div>
             </NavigationLink>
             {(idx + 1 !== sortedRoutes.length) && <div>&#8260;</div>}
           </>
