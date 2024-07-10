@@ -13,9 +13,12 @@ export const ScrollTopButton: Component = () => {
       : btnRef.style.display = 'none'
   }
 
+  const documentScrolled = () =>
+      document.body.scrollTop > activeBtnAfterPxScrolled
+    || document.documentElement.scrollTop > activeBtnAfterPxScrolled
+
   const onScroll = () => {
-    if (document.body.scrollTop > activeBtnAfterPxScrolled
-      || document.documentElement.scrollTop > activeBtnAfterPxScrolled) {
+    if (documentScrolled()) {
       setShowBtn(true)
     } else {
       setShowBtn(false)
@@ -44,7 +47,7 @@ export const ScrollTopButton: Component = () => {
       title="Go to top"
       ref={btnRef}
       style={{
-        display: "none"
+        display: documentScrolled() ? 'block' : 'none'
       }}
       class="
         p-3 sm:p-3.5
