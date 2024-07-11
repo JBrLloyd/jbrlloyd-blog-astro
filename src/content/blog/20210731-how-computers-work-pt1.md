@@ -2,6 +2,7 @@
 title: "How Computers Work #1: Transistors"
 description: A series on uncovering the inner workings on how computers work, bit by bit.
 pubDate: 2021-07-31
+author: Jackson Lloyd
 heroImage: /blog-placeholder-3.jpg
 category: how things work
 subCategory: computers

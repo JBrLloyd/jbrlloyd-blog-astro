@@ -2,6 +2,7 @@
 title: Must Watch Tech Talks
 description: A finding of tech talks you should watch to discover more in Software Engineering.
 pubDate: 2020-05-26
+author: Jackson Lloyd
 heroImage: /blog-placeholder-2.jpg
 category: learning
 subCategory: must see

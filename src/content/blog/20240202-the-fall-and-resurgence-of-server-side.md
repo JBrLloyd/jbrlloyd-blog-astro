@@ -3,6 +3,7 @@ draft: false
 title: The Fall & Resurgence of Server Side
 description: Understanding of why Server Side Rendered (SSR) web applications fell and why hybrid is becoming popular
 pubDate: 2024-02-02
+author: Jackson Lloyd
 heroImage: /blog-placeholder-2.jpg
 category: web development
 subCategory: frontend
