@@ -13,9 +13,10 @@ type Props = {
   title: string
   subTitle: string | undefined
   description: string
+  isArticle?: boolean
 };
 
-const { title, subTitle, description } = Astro.props;
+const { title, subTitle, description, isArticle = false } = Astro.props;
 const isSideDrawerOpen = false;
 
 ---
@@ -23,7 +24,7 @@ const isSideDrawerOpen = false;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} isArticle={isArticle} />
 	</head>
 
 	<body>

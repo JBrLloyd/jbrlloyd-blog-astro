@@ -24,6 +24,7 @@ const readingTimeMins = avgReadingTimeMins(post.body);
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
+	isArticle={true}
 >
 	<BlogPost readingTimeMins={readingTimeMins} {...post.data}>
 		<Content />
