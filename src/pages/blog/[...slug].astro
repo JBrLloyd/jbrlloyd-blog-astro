@@ -4,7 +4,7 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
 
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../components/BlogPost.astro';
-import { avgReadingTimeMins } from '../../helpers/strings';
+import { avgReadingTimeMins } from '../../helpers/string';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');

@@ -1,5 +1,5 @@
-import { compareStrings } from './helpers/strings'
-import { compareNumbers } from './helpers/numbers'
+import { compareStrings } from './helpers/string'
+import { compareNumbers } from './helpers/number'
 
 const PrimaryRouteGrade = 1 as const
 const SecondaryRouteGrade = 2 as const

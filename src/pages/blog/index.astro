@@ -1,23 +1,11 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
-
-import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Heading from '../../components/solid/blocks/Heading';
+import { getBlogPosts } from '../../accessors/astro/blogAccessor';
 
-const isProd = import.meta.env.PROD;
-
-const posts = await getCollection('blog')
-const sortedPosts = posts
-	.filter(p =>
-		// Only apply filtering of posts to production app
-		!isProd
-		|| (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx'))
-	.sort((a, b) =>
-		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-	);
-
+const posts = await getBlogPosts();
 ---
 
 <PageLayout
@@ -33,7 +21,7 @@ const sortedPosts = posts
 				</p>
 			</li>
 			{
-				sortedPosts.map((post) => (
+				posts.map((post) => (
 					<li class="my-6 max-w-[28rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
 						<a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}/`}>
 							<img

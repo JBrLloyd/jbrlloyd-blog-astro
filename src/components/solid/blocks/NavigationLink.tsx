@@ -1,6 +1,6 @@
 import { type ParentComponent, children } from "solid-js"
 
-import { trimTrailingSlash } from '../../../helpers/strings'
+import { trimTrailingSlash } from '../../../helpers/string'
 
 export type NavigationLinkProps = {
   href: string
