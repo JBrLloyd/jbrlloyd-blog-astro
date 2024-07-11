@@ -67,6 +67,10 @@
               <small class="text-gray">
                 Published: <xsl:value-of select="pubDate" />
               </small>
+              <br />
+              <small class="text-gray">
+                Author: <xsl:value-of select="author" />
+              </small>
             </div>
           </xsl:for-each>
         </div>
