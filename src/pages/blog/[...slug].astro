@@ -2,8 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
 
-import { type CollectionEntry, } from 'astro:content';
-import { getBlogPosts } from '../../accessors/astro/blogAccessor';
+import { getBlogPosts, type SortedBlogPost } from '../../accessors/astro/blogAccessor';
 
 import BlogPost from '../../components/BlogPost.astro';
 import { avgReadingTimeMins } from '../../helpers/string';
@@ -15,7 +14,6 @@ export async function getStaticPaths() {
 		props: post,
 	}));
 }
-type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await post.render();
@@ -28,7 +26,12 @@ const readingTimeMins = avgReadingTimeMins(post.body);
 	description={SITE_DESCRIPTION}
 	isArticle={true}
 >
-	<BlogPost readingTimeMins={readingTimeMins} {...post.data}>
+	<BlogPost
+		readingTimeMins={readingTimeMins}
+		previousPostSlug={post.previousPostSlug}
+		nextPostSlug={post.nextPostSlug}
+		{...post.data}
+	>
 		<Content />
 	</BlogPost>
 </PageLayout>
