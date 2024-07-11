@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = 'The Exploring Techie';
 export const SITE_SUBTITLE = 'Explore. Code. Discover.';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_DESCRIPTION = 'Jackson Lloyd\'s (JBrLloyd) blog website';
