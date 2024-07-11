@@ -14,9 +14,10 @@ type Props = {
   subTitle: string | undefined
   description: string
   isArticle?: boolean
+  bannerMessage?: string
 };
 
-const { title, subTitle, description, isArticle = false } = Astro.props;
+const { title, subTitle, description, isArticle = false, bannerMessage } = Astro.props;
 const isSideDrawerOpen = false;
 
 ---
@@ -50,21 +51,43 @@ const isSideDrawerOpen = false;
         <div
           class="
             bg-white
-            py-5
             relative
             sm:-mt-10 sm:mx-8
-            sm:border-2 sm:border-solid
             h-[0%]
             max-w-4xl
             min-w-full sm:min-w-[36rem] md:min-w-[42rem]
             transition-all duration-300 delay-50"
         >
-          <div class="sm:mx-6 max-sm:mx-4">
+          {bannerMessage && (
+            <div
+              id="content-banner"
+              class="
+                text-center bg-salmon-dark
+                text-white flex flex-row
+                p-1 place-items-center"
+            >
+              <p class="ml-auto">{bannerMessage}</p>
+              <button
+                id="close-content-banner-btn"
+                class="
+                  ml-auto rounded-sm
+                  px-2 py-1 h-fit w-fit
+                  m-1 border select-none"
+              >
+                <b>X</b>
+              </button>
+            </div>
+          )}
+
+
+        <div class="sm:border-2">
+          <div class="sm:mx-6 max-sm:mx-4 py-4">
 
             <slot />
 
           </div>
         </div>
+      </div>
 
         <div class="sm:p-5 max-w-xs relative grow-0 text-center lg:self-start self-center">
           <Sidebar />
@@ -83,3 +106,23 @@ const isSideDrawerOpen = false;
     </div>
 	</body>
 </html>
+
+<script>
+  const closeBtn = document.getElementById('close-content-banner-btn');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', onClick)
+  }
+
+  function onClick() {
+    closeContentBanner()
+    closeBtn?.removeEventListener('click', onClick)
+  }
+
+  function closeContentBanner() {
+    const contentBanner = document.getElementById('content-banner');
+
+    if (contentBanner)
+      contentBanner.style.display = 'none'
+  }
+</script>

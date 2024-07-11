@@ -12,21 +12,17 @@ const posts = await getBlogPosts();
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
->
+	bannerMessage='🎺 Upcoming Post: "Setting up Dapr & NATS Locally For Fast Distributed Messaging" 🎺'
+	}>
 	<section class="flex justify-center">
 		<ul class="flex flex-col items-center">
-			<li class="-mt-4">
-				<p class="text-center">
-					🎺 &nbsp;&nbsp; <b>Upcoming Post -</b> Setting up Dapr & NATS Locally For Fast Distributed Messaging &nbsp;&nbsp; 🎺
-				</p>
-			</li>
 			{
 				posts.map((post) => (
-					<li class="my-6 max-w-[28rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
+					<li class="my-6 max-w-[26rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
 						<a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}/`}>
 							<img
 								class="
-									max-h-56
+									max-h-fit
 									relative
 									cursor-pointer
 									filter

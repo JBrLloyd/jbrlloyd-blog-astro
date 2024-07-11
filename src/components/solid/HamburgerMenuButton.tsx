@@ -9,7 +9,7 @@ type HamburgerMenuButtonProps = {
 export const HamburgerMenuButton: Component<HamburgerMenuButtonProps> = ({ isOpen, onClick, className }) => (
   <button
     title="Menu Icon"
-    class={`first-letter:text-gray-500 focus:outline-none shadow-md border-2 border-gray-200 rounded-2xl p-3 max-sm:p-1.5 ${className}`}
+    class={`first-letter:text-gray-500 focus:outline-none shadow-md border border-gray-200 rounded-2xl p-3 max-sm:p-1.5 ${className}`}
     onClick={onClick}
   >
     <div class="flex flex-col flex-nowrap items-center justify-center align-middle w-[32px] h-[30px]">
