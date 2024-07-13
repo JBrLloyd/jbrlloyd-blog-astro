@@ -1,6 +1,7 @@
 ---
 import NavBar from './NavBar.astro'
-import NavigationLink from './solid/blocks/NavigationLink.tsx'
+import MobileNavMenu from './MobileNavMenu.astro';
+import { NavigationLink } from './solid/blocks';
 
 type Props = {
   title: string
@@ -13,7 +14,9 @@ const { title, subTitle } = Astro.props;
 
 <header
 	id="header"
-	class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 flex md:flex-col md:flex-nowrap items-center bg-white max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
+	class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 flex md:flex-col md:flex-nowrap
+	items-center bg-white
+	max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
 ">
 	<div class="flex flex-col items-center max-md:order-2 max-md:mr-auto">
 		<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string} >
@@ -27,9 +30,17 @@ const { title, subTitle } = Astro.props;
 		{subTitle && <p class="text-base pt-1 mm:pt-3.5 italic subpixel-antialiased max-sm:hidden md:border-b px-3">{subTitle}</p>}
 	</div>
 
-	<div class="mr-auto">
-		<NavBar />
-	</div>
+	<nav class="max-md:mr-auto">
+
+		<div class="md:hidden pl-8 max-sm:pl-2 mr-auto">
+			<MobileNavMenu />
+		</div>
+
+		<div class="max-md:hidden text-lg select-none flex-row items-center align-middle mt-2">
+			<NavBar />
+		</div>
+
+	</nav>
 
 </header>
 

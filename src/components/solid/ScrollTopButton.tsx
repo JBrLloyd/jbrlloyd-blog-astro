@@ -1,4 +1,4 @@
-import { type Component, onMount, onCleanup, createSignal } from "solid-js"
+import { type Component, onMount, onCleanup } from "solid-js"
 
 const activeBtnAfterPxScrolled = 200
 
@@ -55,7 +55,20 @@ export const ScrollTopButton: Component = () => {
         z-30 bg-white
         border-2"
     >
-      Top
+
+      <svg
+        height={25}
+        width={25}
+        viewBox="0 0 25 25"
+        xmlns="http://www.w3.org/2000/svg"
+        class="rotate-90 -mr-2"
+      >
+        <title/>
+        <g data-name="Up Arrow" id="Up_Arrow">
+          <path d="M10.1,23a1,1,0,0,0,0-1.41L5.5,17H29.05a1,1,0,0,0,0-2H5.53l4.57-4.57A1,1,0,0,0,8.68,9L2.32,15.37a.9.9,0,0,0,0,1.27L8.68,23A1,1,0,0,0,10.1,23Z"/>
+        </g>
+      </svg>
+
     </button>
   )
 }

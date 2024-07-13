@@ -12,7 +12,7 @@ export type Route = {
   order: number,
 }
 
-export type RouteText = 'Home' | 'Blog' | 'About' | 'Privacy Policy'
+export type RouteText = 'Home' | 'Blog' | 'Privacy Policy' | 'Resume'
 
 export const staticRoutes: Route[] = [
   {
@@ -28,16 +28,10 @@ export const staticRoutes: Route[] = [
     order: 20,
   },
   {
-    text: 'About',
-    link: '/about',
-    grade: PrimaryRouteGrade,
-    order: 40,
-  },
-  {
     text: 'Privacy Policy',
     link: '/privacy-policy',
     grade: SecondaryRouteGrade,
-    order: 50,
+    order: 30,
   },
 ] as const;
 

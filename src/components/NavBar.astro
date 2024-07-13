@@ -1,32 +1,23 @@
 ---
 import NavigationLink from './solid/blocks/NavigationLink.tsx'
-import { MobileMenu } from './solid/MobileMenu.tsx'
 import { sortedPrimaryStaticRoutes } from '../routes';
-
 ---
 
-<nav class="flex flex-row">
-  <div class="md:hidden justify-normal self-center max-md:pl-8 max-sm:pl-2">
-    <MobileMenu client:only="solid-js" />
-  </div>
-  <div class="max-md:hidden self-center mx-auto">
-    <div class="text-lg select-none inline-flex flex-row items-center align-middle mt-2">
-      <div>&lsaquo;</div>
-      {sortedPrimaryStaticRoutes()
-        .map((route, idx, sortedRoutes) => (
-          <>
-            <NavigationLink
-              className="text-sm"
-              href={route.link}
-              getCurrentPath={() => Astro.url.pathname as string}
-            >
-              <div class="px-7 py-3">{route.text}</div>
-            </NavigationLink>
-            {(idx + 1 !== sortedRoutes.length) && <div>&#8260;</div>}
-          </>
-        ))
-      }
-      <div>&rsaquo;</div>
-    </div>
-  </div>
-</nav>
+<div class="text-lg select-none inline-flex flex-row items-center align-middle mt-2">
+  <div>&lsaquo;</div>
+  {sortedPrimaryStaticRoutes()
+    .map((route, idx, sortedRoutes) => (
+      <>
+        <NavigationLink
+          className="text-sm"
+          href={route.link}
+          getCurrentPath={() => Astro.url.pathname as string}
+        >
+          <div class="px-7 py-3">{route.text}</div>
+        </NavigationLink>
+        {(idx + 1 !== sortedRoutes.length) && <div>&#8260;</div>}
+      </>
+    ))
+  }
+  <div>&rsaquo;</div>
+</div>
