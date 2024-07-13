@@ -3,7 +3,6 @@ import { SvgIcon, type SvgElementObject } from "./SvgIcon";
 
 export const navIcons = [
   'home',
-  'about',
   'blogs',
   'userPrivacy'
 ] as const;
@@ -18,28 +17,28 @@ const svgIconPaths: Record<NavIconType, SvgElementObject[]> = {
     }
   }],
 
-  'about': [
-    {
-      type: 'path',
-      element: {
-        d: 'M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'
-      }
-    },
-    {
-      type: 'path',
-      element: {
-        d: 'M12,10H11a1,1,0,0,0,0,2h1v6a1,1,0,0,0,2,0V12A2,2,0,0,0,12,10Z'
-      }
-    },
-    {
-      type: 'circle',
-      element: {
-        cx: 12,
-        cy: 6.5,
-        r: 1.5
-      }
-    }
-  ],
+  // 'about': [
+  //   {
+  //     type: 'path',
+  //     element: {
+  //       d: 'M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z'
+  //     }
+  //   },
+  //   {
+  //     type: 'path',
+  //     element: {
+  //       d: 'M12,10H11a1,1,0,0,0,0,2h1v6a1,1,0,0,0,2,0V12A2,2,0,0,0,12,10Z'
+  //     }
+  //   },
+  //   {
+  //     type: 'circle',
+  //     element: {
+  //       cx: 12,
+  //       cy: 6.5,
+  //       r: 1.5
+  //     }
+  //   }
+  // ],
 
   'blogs': [{
     type: 'path',
@@ -59,7 +58,6 @@ const svgIconPaths: Record<NavIconType, SvgElementObject[]> = {
 const iconPicker = (iconType: NavIconType, className?: string) => {
   switch (iconType) {
     case 'home':
-    case 'about':
     case 'blogs':
     case 'userPrivacy':
       return <SvgIcon height={25} width={25} elements={svgIconPaths[iconType]} className={className} />;

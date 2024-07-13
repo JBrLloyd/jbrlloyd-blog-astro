@@ -8,7 +8,6 @@ import { NavIcon, type NavIconType } from "./icons/NavIcon"
 
 const RouteNavIconTypeMap: Record<RouteText, NavIconType> = {
   'Home': 'home',
-  'About': 'about',
   'Blog': 'blogs',
   'Privacy Policy': 'userPrivacy'
 }

@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: 'https://blog.jbrlloyd.dev',
-  integrations: [mdx(), sitemap(), solidJs({ devtools: true}), tailwind()],
+  integrations: [ mdx(), sitemap(), solidJs({ devtools: true}), tailwind() ],
   output: "hybrid",
   adapter: cloudflare({
     imageService: passthroughImageService()

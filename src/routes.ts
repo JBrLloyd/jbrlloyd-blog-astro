@@ -12,7 +12,7 @@ export type Route = {
   order: number,
 }
 
-export type RouteText = 'Home' | 'Blog' | 'Privacy Policy' | 'Resume'
+export type RouteText = 'Home' | 'Blog' | 'Privacy Policy' // | 'Resume'
 
 export const staticRoutes: Route[] = [
   {
