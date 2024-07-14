@@ -1,15 +1,14 @@
 import { type Component, createSignal } from "solid-js"
 
-import { sortedAllStaticRoutes, type RouteText } from '../../routes'
-// import { LeftBackArrow } from './icons/LeftBackArrow'
+import { sortedAllStaticRoutes, type RouteKey } from '../../routes'
 import { NavigationLink } from './blocks/NavigationLink'
 import { HamburgerMenuButton } from './HamburgerMenuButton'
 import { NavIcon, type NavIconType } from "./icons/NavIcon"
 
-const RouteNavIconTypeMap: Record<RouteText, NavIconType> = {
-  'Home': 'home',
-  'Blog': 'blogs',
-  'Privacy Policy': 'userPrivacy'
+const RouteNavIconTypeMap: Record<RouteKey, NavIconType> = {
+  'home': 'home',
+  'blog': 'blogs',
+  'privacyPolicy': 'userPrivacy'
 }
 
 export const MobileMenu: Component = () => {
@@ -28,14 +27,9 @@ export const MobileMenu: Component = () => {
           onClick={() => toggleSideDrawer()}
         ></div>
         <div
-          class={"absolute w-44 -left-44 sm:w-56 sm:-left-56 h-full bg-white duration-300 ease-out transition-all flex flex-col rounded-r-lg"
+          class={"absolute w-48 -left-48 sm:w-56 sm:-left-56 h-full bg-white duration-300 ease-out transition-all flex flex-col rounded-r-lg"
             + (isSideDrawerOpen() ? ' translate-x-full' : '')}
         >
-          {/* <div class="self-end mr-3 pt-3">
-            <LeftBackArrow height={40} width={40} onClick={() => toggleSideDrawer()}>
-              Close Menu
-            </LeftBackArrow>
-          </div> */}
           {sortedAllStaticRoutes()
             .map((route) => (
               <NavigationLink
@@ -44,7 +38,10 @@ export const MobileMenu: Component = () => {
                 getCurrentPath={() => window.location.pathname}
                 onClick={() => toggleSideDrawer()}
               >
-                <NavIcon iconType={RouteNavIconTypeMap[route.text]} className="inline-block" />
+                <NavIcon
+                  iconType={RouteNavIconTypeMap[route.key]}
+                  className="inline-block"
+                />
                 <p class="pl-3 inline-block">{route.text}</p>
               </NavigationLink>
             ))

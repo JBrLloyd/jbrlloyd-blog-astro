@@ -45,11 +45,10 @@ Astro components are written using [Markdown frontmatter](https://frontmatter.co
 If you have server side rendering or hybrid output set, means you can use server side JavaScript to call external resources with secrets, then send down the rendered HTML to the client, like so: 
 
 ```js title="astro.config.mjs"
-console.log('hewwo') // [!code --]
-import { defineConfig } from 'astro/config'; // [!code ++]
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  output: 'hybrid' // [!code highlight]
+  output: 'hybrid'
 })
 ```
 

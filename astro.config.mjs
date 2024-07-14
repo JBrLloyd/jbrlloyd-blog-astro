@@ -15,7 +15,7 @@ import playformCompress from "@playform/compress";
 import { transformerNotationDiff, transformerNotationFocus, transformerNotationHighlight } from '@shikijs/transformers';
 
 export default defineConfig({
-  site: "https://blog.jbrlloyd.dev",
+  site: "https://jbrlloyd.dev",
   markdown: {
     remarkPlugins: [
       [

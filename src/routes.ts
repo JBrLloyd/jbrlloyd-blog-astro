@@ -6,34 +6,51 @@ const SecondaryRouteGrade = 2 as const
 type RouteGrade = typeof PrimaryRouteGrade | typeof SecondaryRouteGrade
 
 export type Route = {
-  text: RouteText
+  text: string
   link: string
   grade: RouteGrade,
   order: number,
 }
 
-export type RouteText = 'Home' | 'Blog' | 'Privacy Policy' // | 'Resume'
+const routeKeys = [
+  'home',
+  'blog',
+  'privacyPolicy'
+] as const;
 
-export const staticRoutes: Route[] = [
-  {
+export type RouteKey = typeof routeKeys[number]
+
+const routeMap: Record<RouteKey, Route> = {
+  'home': {
     text: 'Home',
     link: '/',
     grade: PrimaryRouteGrade,
-    order: 10,
+    order: 1,
   },
-  {
+  'blog': {
     text: 'Blog',
     link: '/blog',
     grade: PrimaryRouteGrade,
-    order: 20,
+    order: 2,
   },
-  {
+  'privacyPolicy': {
     text: 'Privacy Policy',
     link: '/privacy-policy',
     grade: SecondaryRouteGrade,
-    order: 30,
+    order: 3,
   },
-] as const;
+} as const
+
+type RouteMapType = typeof routeMap
+export type RouteDetails<K extends RouteKey> = RouteMapType[K];
+
+const getRouteDetails = <K extends RouteKey>(key: K): RouteDetails<K> => routeMap[key]
+
+export const getAllStaticRoutes = () => routeKeys
+  .map(k => ({
+    key: k,
+    ...getRouteDetails(k)
+  }));
 
 export const routeSortCompare = (routeA: Route, routeB: Route) => {
   if (routeA.order === routeB.order) {
@@ -43,9 +60,9 @@ export const routeSortCompare = (routeA: Route, routeB: Route) => {
   return compareNumbers(routeA.order, routeB.order)
 };
 
-export const sortedAllStaticRoutes = () => staticRoutes
+export const sortedAllStaticRoutes = () => getAllStaticRoutes()
     .sort(routeSortCompare)
 
-export const sortedPrimaryStaticRoutes = () => staticRoutes
+export const sortedPrimaryStaticRoutes = () => getAllStaticRoutes()
     .filter(r => r.grade === PrimaryRouteGrade)
     .sort(routeSortCompare)
