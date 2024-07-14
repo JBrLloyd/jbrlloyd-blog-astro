@@ -10,6 +10,10 @@ body {
     min-width: 320px;
 }
 
+html {
+	scroll-padding: 4rem
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
