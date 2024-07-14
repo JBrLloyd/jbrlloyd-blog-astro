@@ -1,4 +1,5 @@
 import { type ParentComponent, children } from "solid-js"
+import { assertUnreachable } from "../../../helpers/type"
 
 export type HeadingSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
 
@@ -34,7 +35,6 @@ export const Heading: ParentComponent<HeadingProps> = ({ size, className, ...pro
       return <h1 class={"text-3xl " + addedStyles} {...props}>{c()}</h1>
   }
 
-  // @ts-ignore: Unreachable code error
   assertUnreachable(size)
 }
 

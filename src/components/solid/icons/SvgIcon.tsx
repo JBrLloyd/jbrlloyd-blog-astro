@@ -1,4 +1,5 @@
 import { type Component } from "solid-js"
+import { assertUnreachable } from "../../../helpers/type"
 
 export type SvgElementCircle = {
   cx: number

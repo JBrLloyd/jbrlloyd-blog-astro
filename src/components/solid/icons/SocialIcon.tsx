@@ -1,4 +1,5 @@
 import { type Component, Suspense, lazy } from "solid-js"
+import { assertUnreachable } from "../../../helpers/type"
 
 const SocialIconGithub = lazy(() => import("./SocialIconGithub"))
 const SocialIconLinkedIn = lazy(() => import("./SocialIconLinkedIn"))
@@ -23,7 +24,6 @@ const socialIconPicker = (socialType: SocialIconType) => {
       return <SocialIconInstagram link="https://www.instagram.com/jbrlloyd" />
   }
 
-  // @ts-ignore: Unreachable code error
   assertUnreachable(socialType);
 }
 
