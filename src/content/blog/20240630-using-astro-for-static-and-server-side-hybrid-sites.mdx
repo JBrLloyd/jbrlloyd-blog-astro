@@ -12,18 +12,20 @@ tags:
   - frontend
   - web-development
 ---
+## Contents
+
 [Astro](https://astro.build) is another JavaScript (JS) web framework for creating incredibly fast, sites.
 Astro is opinionated to optimise speed and improved SEO (Search Engine Optimisation) rating.
-It does this by rendering components server side, minimising client side JS required for the site as possible and improving the SEO by sending HTML before sending required JavaScript, if any. I've talked about the performance gains from a hybrid of client side and server side rendering before in a previous blog post [The Fall & Resurgence of Server Side](../20240202-the-fall-and-resurgence-of-server-side)
+It does this by rendering components server side, minimising client side JS required for the site as possible and improving the SEO by sending HTML before sending required JavaScript, if any. I've talked about the performance gains from a hybrid of client side and server side rendering before in a previous blog post [The Fall & Resurgence of Server Side](../20240202-the-fall-and-resurgence-of-server-side).
 
 Astro allows you to plugin and use any major UI framework such as React, Vue, Preact, Svelte and SolidJs.
 These frameworks are an opt-in integrations, which you install and add into Astro config, this integrations will use the specific framework's renderer to create elements. Then taking the HTML output and passing it to Astro to render, this allows any choice of frontend frameworks, which Astro has integrations built for. Lastly, any client side JS can be sent down to the client browser explicitly, this also follows an opt-in approach to prevent excessive JS being sent to the browser taking longer for the site to load, but all the JS will be deferred from being sent until the static content (HTML and CSS) has been sent and painted.
 
 ## Components & Syntax
 
-Astro components are written using Markdown frontmatter to fence (`---`) off server side javascript, Component Script, and the HTML + JS Expressions component, Component Template:
+Astro components are written using [Markdown frontmatter](https://frontmatter.codes/docs/markdown) to fence (`---`) off server side javascript, Component Script, and the HTML + JS Expressions component, Component Template:
 
-```tsx
+```astro
 ---
 // Component Script (JS)
 ---
@@ -32,7 +34,7 @@ Astro components are written using Markdown frontmatter to fence (`---`) off ser
 
 If you have server side rendering or hybrid output set, means you can use server side JavaScript to call external resources with secrets, then send down the rendered HTML to the client, like so: 
 
-```js title="astro.config.mjs"
+```js:astro.config.mjs
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
@@ -42,11 +44,11 @@ export default defineConfig({
 
 Note the outputs are:
 
-> `static` - Default: Building a static site to be deployed to any static host.
-   `server` - Building an app to be deployed to a host supporting SSR (server-side rendering).
-   `hybrid` - Building a static site with a few server-side rendered pages.
+> `static` - Default: Building a static site to be deployed to any static host. <br />
+> `server` - Building an app to be deployed to a host supporting SSR (server-side rendering). <br />
+> `hybrid` - Building a static site with a few server-side rendered pages.
 
-```tsx title="src/pages/index.asto"
+```astro:src/pages/index.asto
 ---
 import { connectDb } from "...";
 
@@ -70,7 +72,7 @@ const TitleElementTag = 'h1'
 		{title}
 	</TitleElementTag>
 	<ul>
-		{data.map(item => (<li>{item}</li>)}
+		{data.map(item => (<li>{item}</li>))}
 	</ul>
 </div>
 ```
@@ -89,8 +91,7 @@ Out of the box, Astro focuses on static or server side rendering rather than cli
 
 There are a few options to optimise it as well, let's see what this looks like if had a banner message which we want to have a close button:
 
-```jsx title="src/pages/index.astro"
-// src/pages/index.astro
+```astro:src/pages/index.astro
 ---
 // This is staticly built into the HTML output or server side rendered
 // this uses a argument passed in or uses the default, e.g.
@@ -107,9 +108,9 @@ const {
 	<body>
 
 		{bannerMessage && (
-			<div id="content-banner"
+			<div id="content-banner">
 			  <p>{bannerMessage}</p>
-			  <button id="close-content-banner-btn"
+			  <button id="close-content-banner-btn">
 				<b>X</b>
 			  </button>
 			</div>
@@ -119,11 +120,13 @@ const {
 	<footer>...</footer>
 </html>
 
-// Astro will compile this into your `<head>` with type="module", preventing 
-// rendering blocking of HTML and will be deferred + lazy loaded with async.
-// We can use `is:inline `directives to opt-out of this optimizations and
-// render it in the HTML: `<script is:inline>` or `<script is:global>` to
-// not just scope it to this component
+<!--
+	Astro will compile this into your `<head>` with type="module", preventing 
+	rendering blocking of HTML and will be deferred + lazy loaded with async.
+	We can use `is:inline `directives to opt-out of this optimizations and
+	render it in the HTML: `<script is:inline>` or `<script is:global>` to
+	not just scope it to this component
+-->
 <script>
 	const closeBtn = document.getElementById('close-content-banner-btn');
 	
@@ -150,8 +153,7 @@ const {
 Astro offers the ability to plugin integrations to add functionality such as mdx, sitemaps, tailwind and other UI frameworks such as React, Vue, Svelte, Preact, SolidJS, lit and others.
 An example of how we'd setup SolidJs with client side JavaScript is as such:
 
-```js title="astro.config.mjs"
-// astro.config.mjs
+```js:astro.config.mjs
 import { defineConfig } from 'astro/config';
 import solidJs from '@astrojs/solid-js';
 
@@ -161,8 +163,7 @@ export default defineConfig({
 });
 ```
 
-```tsx title="src/components/solid/SolidJsCounter.tsx"
-// src/components/solid/SolidJsCounter.tsx
+```tsx:src/components/solid/SolidJsCounter.tsx
 import { type Component, createSignal } from 'solid-js';
 
 export default const SolidJsCounter : Component = () => {
@@ -181,8 +182,7 @@ export default const SolidJsCounter : Component = () => {
 
 We can now import the SolidJS component, however, because we're making use of client side JavaScript, we need to explicitly provide a client directive, or else the client side JS will not be sent by Astro framework:
 
-```tsx title="src/pages/index.astro"
-// src/pages/index.astro
+```astro:src/pages/index.astro
 ---
 // Server side JavaScript
 import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
@@ -197,8 +197,7 @@ import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
 One problem with having the ability of multiple UI frameworks, is sharing state across them, as usually the state managers are language specific. Hence, the Astro recommendation is using [Nano Stores](https://github.com/nanostores/nanostores), which is lightweight (> 1 KB) and framework agnostic.
 Let's see how we can create 2 counters in different frameworks which increment and decrement the same state:
 
-```ts title="src/stores/countStore.ts"
-// src/stores/countStore.ts
+```ts:src/stores/countStore.ts
 import { atom, map } from 'nanostores';
 
 export const count = atom(0);
@@ -207,8 +206,7 @@ export const incrementCount = () => count = count.get() + 1;
 export const decrementCount = () => count = count.get() - 1;
 ```
 
-```tsx title="src/components/solid/SolidJsCounter.tsx"
-// src/components/solid/SolidJsCounter.tsx
+```tsx:src/components/solid/SolidJsCounter.tsx
 import { type Component } from 'solid-js';
 import { useStore } from '@nanostores/solid';
 
@@ -228,8 +226,7 @@ export default const SolidJsCounter : Component = () => {
 }
 ```
 
-```tsx title="src/components/react/ReactCounter.tsx"
-// src/components/solid/SolidJsCounter.tsx
+```tsx:src/components/react/ReactCounter.tsx
 import { type FunctionComponent } from 'react';
 import { useStore } from '@nanostores/react';
 
@@ -249,8 +246,7 @@ export default const ReactCounter : FunctionComponent = () => {
 }
 ```
 
-```tsx title="src/pages/index.astro"
-// src/pages/index.astro
+```astro:src/pages/index.astro
 ---
 import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
 import ReactCounter from '../components/react/ReactCounter.tsx';
@@ -280,8 +276,7 @@ Let's hone in on CloudFlare adapter, first we have to install the adapter into o
 > pnpm add @astrojs/cloudflare
 ```
 
-```js title="astro.config.mjs"
-// astro.config.mjs
+```js:astro.config.mjs
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -304,17 +299,19 @@ Install this and preview:
 
 We can also wire this up in our project's CLI, note that Astro will compile files into `dist/` directory as it's build output:
 
-```json title="package.json"
-// package.json
+```json:package.json
 {
-	...,
+	// ...,
 	"scripts": {
 		"build": "wrangler types && astro check && astro build",
 		"preview:cf": "pnpm run build && wrangler pages dev ./dist",
-		...
+		//...
 	},
-	...
+	//...
 }
 ```
 
 `wrangler pages dev ./dist` will emulate a CF page worker using the Astro build output as the root.
+
+## Conclusion
+

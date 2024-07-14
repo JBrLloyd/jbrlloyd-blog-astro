@@ -79,6 +79,8 @@ const blogPath = '/blog'
 			overflow-hidden
 			w-full
 			prose
+			before:[&_blockquote_p:first-of-type]:content-none
+			after:[&_blockquote_p:last-of-type]:content-noneprose-blockquote:prose-quoteless
 			prose-li:m-0
 			prose-ul:my-0.5
 			prose-ol:my-0.5
