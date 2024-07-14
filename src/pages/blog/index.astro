@@ -20,7 +20,7 @@ const posts = await getBlogPosts();
 			{
 				posts.map((post) => (
 					<li class="my-6 max-w-[26rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
-						<a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}/`}>
+						<a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}`}>
 							<img
 								class="
 									max-h-fit

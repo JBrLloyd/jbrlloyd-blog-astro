@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites.mdx",
+                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites.mdx",
+                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites.mdx",
+                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites.mdx"
+                "file": "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.mdx"
               }
             }
           }
@@ -149,14 +149,20 @@
   },
   "active": "5cff05f9c3e58aaa",
   "lastOpenFiles": [
-    "blog/markdown-style-guide.md",
-    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites.mdx",
+    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.mdx",
     "blog/20240202-the-fall-and-resurgence-of-server-side.md",
-    "blog/20210731-how-computers-work-pt1.md",
+    "blog/markdown-style-guide.md",
+    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/index.md",
+    "blog/using-mdx.mdx",
+    "20240630-using-astro-for-static-and-server-side-hybrid-sites/index.md",
+    "20240630-using-astro-for-static-and-server-side-hybrid-sites",
+    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/2023_stateofjs-meta-ui-frameworks-positivity.png",
     "blog/20200526-must-watch-tech-talks.md",
+    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites/2023_stateofjs-meta-ui-frameworks-usage.png",
+    "blog/20210731-how-computers-work-pt1.md",
+    "blog/20240630-using-astro-for-static-and-server-side-hybrid-sites",
     "Pasted image 20240707212732.png",
     "templates/blog-template.md",
-    "blog/using-mdx.mdx",
     "blog/test.md",
     "templates",
     "Welcome.md"

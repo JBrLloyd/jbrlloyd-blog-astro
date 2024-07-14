@@ -1,6 +1,8 @@
 import { defineConfig, passthroughImageService } from "astro/config";
 import mdx from "@astrojs/mdx";
-import remarkCodeTitle from "remark-flexible-code-titles";
+import expressiveCode from "astro-expressive-code";
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+import rehypeSanitize from 'rehype-sanitize';
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -10,9 +12,9 @@ import cloudflare from "@astrojs/cloudflare";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
 import playformCompress from "@playform/compress";
+import { transformerNotationDiff, transformerNotationFocus, transformerNotationHighlight } from '@shikijs/transformers';
 
-/** @type { import("astro/config").AstroUserConfig } */
-const astroUserConfig = {
+export default defineConfig({
   site: "https://blog.jbrlloyd.dev",
   markdown: {
     remarkPlugins: [
@@ -20,14 +22,8 @@ const astroUserConfig = {
         remarkToc,
         {
           heading: "contents",
-          maxDepth: 3,
-        },
-      ],
-      [
-        remarkCodeTitle,
-        {
-          titleTagName: "span",
-        },
+          maxDepth: 3
+        }
       ],
     ],
     rehypePlugins: [
@@ -36,21 +32,36 @@ const astroUserConfig = {
       [
         rehypeAutolinkHeadings,
         {
-          titleTagName: "CodeBlockTitle",
-          titleClassName: "custom-code-title",
-          titleProperties: (language, title) => ({
-            ["data-language"]: language,
-            title,
-          }),
-        },
-      ],
+          behavior: 'prepend',
+          content: {
+            type: 'text',
+            value: '#',
+          },
+          headingProperties: {
+            className: ['header-anchor'],
+          },
+          properties: {
+            className: ['header-anchor-link'],
+          },
+        }
+      ]
     ],
-    shikiConfig: {},
+    shikiConfig: {
+      transformers: [transformerNotationDiff(), transformerNotationFocus(), transformerNotationHighlight()]
+    }
   },
-  integrations: [sitemap(), solidJs(), tailwind(), mdx(), playformCompress()],
+  integrations: [
+    sitemap(),
+    solidJs(),
+    tailwind(),
+    expressiveCode({
+      defaultLocale: 'en-UK',
+      themes: ['github-dark'],
+      plugins: [pluginLineNumbers()],
+    }),
+    mdx(),
+    playformCompress(),
+  ],
   output: "hybrid",
-  adapter: cloudflare({
-  }),
-};
-
-export default defineConfig(astroUserConfig);
+  adapter: cloudflare()
+});
