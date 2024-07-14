@@ -10,8 +10,16 @@ body {
     min-width: 320px;
 }
 
-html {
-	scroll-padding: 4rem
+/* Required mobile sticky header, avoiding anchor tags clipping */
+@media (max-width: 768px) {
+	html {
+		scroll-padding: 6rem
+	}
+}
+@media (max-width: 640px) {
+	html {
+		scroll-padding: 4rem
+	}
 }
 
 @tailwind base;
