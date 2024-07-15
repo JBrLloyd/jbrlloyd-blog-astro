@@ -23,13 +23,47 @@ It does this by rendering components server side, minimising client side JS requ
 Astro allows you to plugin and use any major UI framework such as React, Vue, Preact, Svelte and SolidJs.
 These frameworks are an opt-in integrations, which you install and add into Astro config, this integrations will use the specific framework's renderer to create elements. Then taking the HTML output and passing it to Astro to render, this allows any choice of frontend frameworks, which Astro has integrations built for. Lastly, any client side JS can be sent down to the client browser explicitly, this also follows an opt-in approach to prevent excessive JS being sent to the browser taking longer for the site to load, but all the JS will be deferred from being sent until the static content (HTML and CSS) has been sent and painted.
 
-Astro v1 framework was GA released June 2022 and has since made its way to v4. According to [State Of JS 2023 Meta Frameworks](https://2023.stateofjs.com/en-US/libraries/meta-frameworks/), it has grown in usage to rival Gatsby and Nuxt, which is is not as high as Next.js but a positive growth:
+Astro has grown in popularity largely for it's static site generation capabilities, using the latest tech with built-in batteries included from [vite](https://vitejs.dev/), markdown to HTML generation (Frontmatter support, [remark](https://github.com/remarkjs/remark) & [rehype](https://github.com/rehypejs/rehype)), type generations using [Zod](https://zod.dev/), server-side support and great development experience, with the as mentioned focus on performance and isolating deferred client JavaScript in hydrated "Islands", allowing support of having a mix of multiple UI frameworks:
 
-![img](./2023_stateofjs-meta-ui-frameworks-usage.png)
+![A layout of components which can be static or client side interactive island (such as a header menu)](astro-interactive-islands.png)
+(Source: [Astro Islands](https://docs.astro.build/en/concepts/islands/))
 
-Additionally, the overall positive rating has made it 2nd to Next.js, and the focus on development experience with performance defaulted, has left it feeling flexible and easy to use:
+These Islands can be built with any framework with the JS, including relevant framework, bundled in, if you think about that, you can inject other components even remotely, making it incredibly easy to implement Microfrontends. Here's an example, but you can [read more in this article](https://medium.com/@sergio.a.soria/setting-up-micro-frontends-with-astro-and-ecma-script-modules-137340d2c520):
 
-![image](2023_stateofjs-meta-ui-frameworks-positivity.png)
+```jsx showLineNumbers
+import MicroFrontendA from 'http://localhost:7100/bundle.js';  
+import MicroFrontendB from 'http://localhost:7200/bundle.js';  
+  
+const ReactComponent = () => (  
+	<>
+		<React.Suspense fallback="Loading…">
+			<MicroFrontendA />
+		</React.Suspense>
+
+		<React.Suspense fallback="Loading…">
+			<MicroFrontendB />
+		</React.Suspense>
+	</>
+);  
+  
+export default ReactComponent;
+```
+
+You can also take quick advantage of what functionality you're after with Astro pre-built themes (free or paid) and [templates](https://github.com/withastro/astro/tree/main/examples) with either official examples:
+
+```sh showLineNumbers=false frame="none"
+npm create astro@latest -- --template <example-name>
+```
+
+Astro v1 framework was GA released June 2022 and has since made its way to v4. According to [State Of JS 2023 Meta Frameworks](https://2023.stateofjs.com/en-US/libraries/meta-frameworks/), Astro has grown in usage (19%) to rival Gatsby (23%) and Nuxt (25%), which is is not as high as Next.js (56%) but a positive growth:
+
+![State of JS 2023 Meta Frameworks usage, showing usage growth annually](./2023_stateofjs-meta-ui-frameworks-usage.png)
+(Source:  [State Of JS 2023 Meta Frameworks](https://2023.stateofjs.com/en-US/libraries/meta-frameworks/))
+
+Additionally, the overall positive rating of Astro (54%) has made it 2nd to Next.js (64%), and the focus on development experience with performance defaulted, has left it feeling flexible and easy to use:
+
+![State of JS 2023 Meta Frameworks positivity, showing increased positive sentiment annually](2023_stateofjs-meta-ui-frameworks-positivity.png)
+(Source:  [State Of JS 2023 Meta Frameworks](https://2023.stateofjs.com/en-US/libraries/meta-frameworks/))
 
 ## Components & Syntax
 
@@ -44,7 +78,7 @@ Astro components are written using [Markdown frontmatter](https://frontmatter.co
 
 If you have server side rendering or hybrid output set, means you can use server side JavaScript to call external resources with secrets, then send down the rendered HTML to the client, like so: 
 
-```js title="astro.config.mjs"
+```js title="astro.config.mjs" showLineNumbers ins={4}
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
@@ -55,12 +89,12 @@ export default defineConfig({
 Note the outputs are:
 
 > `static` - Default: Building a static site to be deployed to any static host.
->
+> 
 > `server` - Building an app to be deployed to a host supporting SSR (server-side rendering).
 >
 > `hybrid` - Building a static site with a few server-side rendered pages.
 
-```astro title="src/pages/index.asto"
+```astro title="src/pages/index.asto" showLineNumbers
 ---
 import { connectDb } from "...";
 
@@ -103,7 +137,7 @@ Out of the box, Astro focuses on static or server side rendering rather than cli
 
 There are a few options to optimise it as well, let's see what this looks like if had a banner message which we want to have a close button:
 
-```astro title="src/pages/index.astro"
+```astro title="src/pages/index.astro" showLineNumbers
 ---
 // This is staticly built into the HTML output or server side rendered
 // this uses a argument passed in or uses the default, e.g.
@@ -165,9 +199,11 @@ const {
 Astro offers the ability to plugin integrations to add functionality such as mdx, sitemaps, tailwind and other UI frameworks such as React, Vue, Svelte, Preact, SolidJS, lit and others.
 An example of how we'd setup SolidJs with client side JavaScript is as such:
 
-```js title="astro.config.mjs"
+```js title="astro.config.mjs" showLineNumbers {8}
 import { defineConfig } from 'astro/config';
 import solidJs from '@astrojs/solid-js';
+import react from '@astrojs/react';
+import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://example.com',
@@ -175,7 +211,7 @@ export default defineConfig({
 });
 ```
 
-```tsx title="src/components/solid/SolidJsCounter.tsx"
+```tsx title="src/components/solid/SolidJsCounter.tsx" showLineNumbers
 import { type Component, createSignal } from 'solid-js';
 
 export default const SolidJsCounter : Component = () => {
@@ -194,7 +230,7 @@ export default const SolidJsCounter : Component = () => {
 
 We can now import the SolidJS component, however, because we're making use of client side JavaScript, we need to explicitly provide a client directive, or else the client side JS will not be sent by Astro framework:
 
-```astro title="src/pages/index.astro"
+```astro title="src/pages/index.astro" showLineNumbers=false
 ---
 // Server side JavaScript
 import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
@@ -209,7 +245,7 @@ import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
 One problem with having the ability of multiple UI frameworks, is sharing state across them, as usually the state managers are language specific. Hence, the Astro recommendation is using [Nano Stores](https://github.com/nanostores/nanostores), which is lightweight (> 1 KB) and framework agnostic.
 Let's see how we can create 2 counters in different frameworks which increment and decrement the same state:
 
-```ts title="src/stores/countStore.ts"
+```ts title="src/stores/countStore.ts" showLineNumbers
 import { atom, map } from 'nanostores';
 
 export const count = atom(0);
@@ -218,7 +254,7 @@ export const incrementCount = () => count = count.get() + 1;
 export const decrementCount = () => count = count.get() - 1;
 ```
 
-```tsx title="src/components/solid/SolidJsCounter.tsx"
+```tsx title="src/components/solid/SolidJsCounter.tsx" showLineNumbers
 import { type Component } from 'solid-js';
 import { useStore } from '@nanostores/solid';
 
@@ -238,7 +274,7 @@ export default const SolidJsCounter : Component = () => {
 }
 ```
 
-```tsx title="src/components/react/ReactCounter.tsx"
+```tsx title="src/components/react/ReactCounter.tsx" showLineNumbers
 import { type FunctionComponent } from 'react';
 import { useStore } from '@nanostores/react';
 
@@ -258,7 +294,7 @@ export default const ReactCounter : FunctionComponent = () => {
 }
 ```
 
-```astro title="src/pages/index.astro"
+```astro title="src/pages/index.astro" showLineNumbers
 ---
 import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
 import ReactCounter from '../components/react/ReactCounter.tsx';
@@ -283,12 +319,12 @@ However, we make use of server-side rendering (SSR) through one of the following
 Note that node will allow us to host our site with SSR ourselves through most self-hosting mechanisms such as using containers. Each adaptor has different configuration and setup, but all require setting the Astro configuration to `output` a server side capability.
 Let's hone in on CloudFlare adapter, first we have to install the adapter into our Astro project:
 
-```bash showLineNumbers=false
-> pnpm astro add cloudflare
-> pnpm add @astrojs/cloudflare
+```sh showLineNumbers=false
+pnpm astro add cloudflare
+pnpm add @astrojs/cloudflare
 ```
 
-```js title="astro.config.mjs"
+```js title="astro.config.mjs" showLineNumbers ins={2, 5-6}
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -303,15 +339,15 @@ After enabling CloudFlare (CF) adaptor functionality, we can create a CF pages s
 but not working when deploying to CF Pages. So the best way to ensure your site will work in CF locally is to use CF Pages emulator via the CF CLI `wrangler`.
 Install this and preview:
 
-```bash showLineNumbers=false
-> npm install -g wrangler
-> wrangler login
-> pnpm add wrangler --save-dev
+```sh showLineNumbers=false
+npm install -g wrangler
+wrangler login
+pnpm add wrangler --save-dev
 ```
 
 We can also wire this up in our project's CLI, note that Astro will compile files into `dist/` directory as it's build output:
 
-```json title="package.json"
+```json title="package.json" showLineNumbers
 {
 	// ...,
 	"scripts": {
@@ -325,8 +361,29 @@ We can also wire this up in our project's CLI, note that Astro will compile file
 
 `wrangler pages dev ./dist` will emulate a CF page worker using the Astro build output as the root.
 
+If you do want to setup using CloudFlare pages, you can simply create a page, connect it to a git repository and then select `Astro` Framework preset, this'll take the main branch and deploy it as well as hook into any new commits on the branch and rebuild & deploy (`pnpm`, `yarn` + [others](https://blog.cloudflare.com/moderizing-cloudflare-pages-builds-toolbox/) package managers are support if you wish to change the build command to the corresponding manager):
+
+![img](./setup-cloudflare-pages-astro-preset.png)
+
+If you do go down this route, out of the box you'll get preview builds and hosting on non-main branches and I also recommend you turn on build caching to take your build time down from 2-3 mins to >1 min! 🚀
+
+![img](cloudflare-pages-build-cache.png)
+
 ## Recommended Plugins
 
+Out of the box markdown (and MDX integration is added) files are processed by [remark](https://github.com/remarkjs/remark), which processes markdown into an AST and allows plugins to modify outputs, then outputs it through [rehype](https://github.com/rehypejs/rehype). Find more in the list of [remark plugins](https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins) or [rehype plugins](https://github.com/rehypejs/rehype/blob/main/doc/plugins.md).
+
+Here are some of my recommendations:
+
+- `@astrojs/mdx` - adds MDX support for content.
+- `@playform/compress` - compress css, images, html, js and images (through minification and other mechanisms).
+- `remark-toc` - Automatically generates a Table of Content based on headers.
+- `astro-expressive-code` - Adds great looking styles around code blocks, including file names, line numbers, diff highlighting and more.
+- `rehypeAccessibleEmojis` - Add accessibility to emojis without needing to do anything more.
+- `rehype-slug` + `rehype-autolink-headings` - Adds ID attributes to headers and links to attach to them.
 
 ## Final Thoughts
 
+I had initially built a Wordpress blog to get more into Wordpress development, but then realised that most of the things I wanted to do was incredibly difficult to implement due to how the framework restricts you. So I tried converting it to React Gatsby.js, this led to a different level of frustrations in dealing with plug-ins and more often then not, breaking things which, overall it felt like a very complicated trying to make minor changes.
+
+Astro has been a very pleasant experience with a well architected solution which is highly flexible and developer first experience. I won't say it's perfect because it does have downfalls.

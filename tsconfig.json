@@ -3,6 +3,14 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@solidComponents/*": ["src/components/solid/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@accessors/*": ["src/accessors/*"],
+    }
   }
 }

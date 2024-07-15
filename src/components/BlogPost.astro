@@ -1,9 +1,8 @@
 ---
-import type { SortedBlogPost } from '../accessors/astro/blogAccessor';
+import type { SortedBlogPost } from '@accessors/astro/blogAccessor';
 import FormattedDate from './FormattedDate.astro';
-
-import { Heading } from "./solid/blocks/Heading";
-import { NavigationLink } from './solid/blocks';
+import { Heading, NavigationLink } from "@solidComponents/blocks";
+import { getRouteDetails } from "../routes";
 
 type Props = SortedBlogPost['data'] & {
 	previousPostSlug: SortedBlogPost['previousPostSlug']
@@ -22,7 +21,7 @@ const {
 	nextPostSlug
 } = Astro.props;
 
-const blogPath = '/blog'
+const blogPath = getRouteDetails('blog').link
 ---
 
 <article
@@ -86,6 +85,13 @@ const blogPath = '/blog'
 			prose-ol:my-0.5
 			[&_.expressive-code]:my-6
 			[&_.header-anchor-link]:pr-2
+			prose-code:font-medium
+			prose-code:before:content-none
+			prose-code:after:content-none
+			prose-code:bg-gray-200
+			prose-code:px-1 prose-code:py-[1px] prose-code:rounded-md
+			[&>blockquote>p]:my-1.5
+			[&>p_img]:my-0
 		">
 
 			<slot />

@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Sidebar from '../components/Sidebar.astro';
-import Footer from '../components/Footer.astro';
-import { ScrollTopButton } from '../components/solid/ScrollTopButton.tsx';
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+import Footer from '@components/Footer.astro';
+import { ScrollTopButton } from '@solidComponents/ScrollTopButton.tsx';
 
 import bannerImage from '../images/jbrlloyd-banner.png';
 
@@ -17,7 +17,13 @@ type Props = {
   bannerMessage?: string
 };
 
-const { title, subTitle, description, isArticle = false, bannerMessage } = Astro.props;
+const {
+  title,
+  subTitle,
+  description,
+  isArticle = false,
+  bannerMessage
+} = Astro.props;
 const isSideDrawerOpen = false;
 
 ---
@@ -32,7 +38,7 @@ const isSideDrawerOpen = false;
 
     <section class={
       "flex flex-col min-h-screen bg-[#fafafa] overflow-y" + (isSideDrawerOpen
-        ? ' overflow-y-hidden [@media(max-width:767px)]:scrollbar-hide'
+        ? ' overflow-y-hidden max-md:scrollbar-hide'
         : '')}>
 
       <Header title={title} subTitle={subTitle} />

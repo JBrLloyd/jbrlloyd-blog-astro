@@ -1,3 +1,7 @@
 {
-  "showLineNumber": false
+  "showLineNumber": false,
+  "newLinkFormat": "relative",
+  "newFileLocation": "root",
+  "attachmentFolderPath": "./",
+  "useMarkdownLinks": true
 }

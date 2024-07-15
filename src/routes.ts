@@ -44,7 +44,7 @@ const routeMap: Record<RouteKey, Route> = {
 type RouteMapType = typeof routeMap
 export type RouteDetails<K extends RouteKey> = RouteMapType[K];
 
-const getRouteDetails = <K extends RouteKey>(key: K): RouteDetails<K> => routeMap[key]
+export const getRouteDetails = <K extends RouteKey>(key: K): RouteDetails<K> => routeMap[key]
 
 export const getAllStaticRoutes = () => routeKeys
   .map(k => ({

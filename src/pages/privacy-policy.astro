@@ -1,9 +1,9 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import {Heading, Paragraph } from "../components/solid/blocks";
+import PageLayout from '@layouts/PageLayout.astro';
+import { Heading, Paragraph, BlockQuote } from "@solidComponents/blocks";
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 
-const siteUrl = "https://jbrlloyd.dev/"
+const siteUrl = Astro.site
 ---
 
 <PageLayout

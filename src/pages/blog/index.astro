@@ -1,9 +1,9 @@
 ---
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
-import PageLayout from '../../layouts/PageLayout.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Heading from '../../components/solid/blocks/Heading';
-import { getBlogPosts } from '../../accessors/astro/blogAccessor';
+import PageLayout from '@layouts/PageLayout.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import Heading from '@components/solid/blocks/Heading';
+import { getBlogPosts } from '@accessors/astro/blogAccessor';
 
 const posts = await getBlogPosts();
 
