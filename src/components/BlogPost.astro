@@ -65,9 +65,9 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 		{tags && (
 			<ul class="flex justify-center my-1 w-10/12
 				*:rounded-full *:border *:px-2 *:py-0.5 *:m-1
-				text-white *:border-salmon-dark/15 *:bg-salmon-dark/75"
+				text-white *:border-salmon *:bg-salmon/80"
 			>
-				{tags.map(t => <li class="h-fit">{t}</li>)}
+				{tags.map(t => <li class="h-fit font-bold capitalize">{t}</li>)}
 			</ul>
 		)}
 	</div>
