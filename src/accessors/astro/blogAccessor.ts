@@ -1,15 +1,22 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 const isProd = import.meta.env.PROD;
 
 type BlogPostData = CollectionEntry<'blog'>;
 
-export const getAllBlogPosts = async () => {
-  return  await getCollection('blog', (p) => {
+export const getBlogEntryBySlugOrId = async (id: string | null) => {
+  if (!id) {
+    return null;
+  }
+
+  return await getEntry('blog', id);
+}
+
+export const getAllBlogPosts = async () => await getCollection('blog',
+  (p) => {
     // Only apply filtering of posts to production app
     return !isProd
       || (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx')
   })
-}
 
 export const sortPostsByPublishDesc = (blogPosts: CollectionEntry<'blog'>[]) => {
   return blogPosts

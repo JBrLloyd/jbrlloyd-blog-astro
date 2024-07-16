@@ -1,5 +1,5 @@
 ---
-import type { SortedBlogPost } from '@accessors/astro/blogAccessor';
+import { type SortedBlogPost, getBlogEntryBySlugOrId } from '@accessors/astro/blogAccessor';
 import FormattedDate from './FormattedDate.astro';
 import { Heading, NavigationLink } from "@solidComponents/blocks";
 import { getRouteDetails } from "../routes";
@@ -22,6 +22,9 @@ const {
 } = Astro.props;
 
 const blogPath = getRouteDetails('blog').link
+
+const nextBlogPostDetails = await getBlogEntryBySlugOrId(nextPostSlug);
+const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 ---
 
 <article
@@ -37,19 +40,7 @@ const blogPath = getRouteDetails('blog').link
 	<div
 		class="inline-flex flex-row flex-nowrap place-items-center w-full
 			*:py-2 *:px-6 *:text-center -mt-4 flex-grow-0">
-		<div>
-			{nextPostSlug && (
-				<NavigationLink href={`${blogPath}/${nextPostSlug}`}>
-					Next
-				</NavigationLink>)}
-		</div>
 		<NavigationLink href={blogPath} className="m-auto">All Posts</NavigationLink>
-		<div>
-			{previousPostSlug && (
-				<NavigationLink href={`${blogPath}/${previousPostSlug}`}>
-					Prev
-				</NavigationLink>)}
-		</div>
 	</div>
 
 	{heroImage && <img src={heroImage} alt="" />}
@@ -100,18 +91,21 @@ const blogPath = getRouteDetails('blog').link
 
 	<div
 		class="inline-flex flex-row flex-nowrap place-items-center w-full *:pb-4 *:pt-6 *:px-6
-			*:text-center -mb-4 flex-grow-0">
+			*:text-center -mb-4 justify-between">
 		<div>
 			{nextPostSlug && (
 				<NavigationLink href={`${blogPath}/${nextPostSlug}`}>
-					Next
+					Next {nextBlogPostDetails && (
+						<>| {nextBlogPostDetails.data.title}</>
+					)}
 				</NavigationLink>)}
 		</div>
-		<NavigationLink href={blogPath} className="m-auto">All Posts</NavigationLink>
 		<div>
 			{previousPostSlug && (
 				<NavigationLink href={`${blogPath}/${previousPostSlug}`}>
-					Prev
+					{prevBlogPostDetails && (
+						<>{prevBlogPostDetails.data.title} |</>
+					)} Prev
 				</NavigationLink>)}
 		</div>
 	</div>
