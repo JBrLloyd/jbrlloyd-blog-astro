@@ -23,6 +23,7 @@ const {
 } = Astro.props;
 
 const blogPath = getRouteDetails('blog').link
+const blogPostTags = tags?.filter(t => t !== 'blog');
 
 const nextBlogPostDetails = await getBlogEntryBySlugOrId(nextPostSlug);
 const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
@@ -62,13 +63,13 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 				)
 			}
 		</span>
-		{tags && (
+		{blogPostTags && (
 			<ul class="flex flex-initial flex-wrap justify-center gap-1.5
 				w-10/12 my-2
 				*:rounded-full *:border *:px-2 *:py-0.5
 				text-white *:border-salmon *:bg-salmon/80"
 			>
-				{tags.map(t => <li class="w-fit h-fit font-bold capitalize">{t}</li>)}
+				{blogPostTags.map(t => <li class="w-fit h-fit font-bold capitalize">{t}</li>)}
 			</ul>
 		)}
 	</div>
