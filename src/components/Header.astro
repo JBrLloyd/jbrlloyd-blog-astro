@@ -14,11 +14,12 @@ const { title, subTitle } = Astro.props;
 
 <header
 	id="header"
-	class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 flex md:flex-col md:flex-nowrap
-	items-center bg-white
-	max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
-">
-	<div class="flex flex-col items-center max-md:order-2 max-md:mr-auto">
+	class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 flex md:flex md:flex-col md:flex-nowrap
+		items-center bg-white
+		max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
+	"
+>
+	<div class="flex flex-col items-center max-md:order-2 max-md:m-auto">
 		<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string} >
 			<h1
 				class="text-4xl text-center font-bold max-sm:text-2xl
@@ -30,9 +31,9 @@ const { title, subTitle } = Astro.props;
 		{subTitle && <p class="text-base pt-1 mm:pt-3.5 italic subpixel-antialiased max-sm:hidden md:border-b px-3">{subTitle}</p>}
 	</div>
 
-	<nav class="max-md:mr-auto">
+	<nav class="">
 
-		<div class="md:hidden pl-8 max-sm:pl-2 mr-auto">
+		<div class="md:hidden pl-8 max-sm:pl-2">
 			<MobileNavMenu />
 		</div>
 

@@ -18,7 +18,8 @@ const {
 	heroImage,
 	readingTimeMins,
 	previousPostSlug,
-	nextPostSlug
+	nextPostSlug,
+	tags
 } = Astro.props;
 
 const blogPath = getRouteDetails('blog').link
@@ -44,7 +45,7 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 	</div>
 
 	{heroImage && <img src={heroImage} alt="" />}
-	<div class="py-5 text-center">
+	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center">
 		<Heading size='3xl' className='py-2' >{title}</Heading>
 		<span>
 			<div class="inline">Published on <FormattedDate date={pubDate} /></div>
@@ -61,7 +62,14 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 				)
 			}
 		</span>
-		<hr />
+		{tags && (
+			<ul class="flex justify-center my-1 w-10/12
+				*:rounded-full *:border *:px-2 *:py-0.5 *:m-1
+				text-white *:border-salmon-dark/15 *:bg-salmon-dark/75"
+			>
+				{tags.map(t => <li class="h-fit">{t}</li>)}
+			</ul>
+		)}
 	</div>
 
 	<div
