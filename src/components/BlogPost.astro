@@ -45,7 +45,7 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 	</div>
 
 	{heroImage && <img src={heroImage} alt="" />}
-	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center">
+	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center w-full">
 		<Heading size='3xl' className='py-2' >{title}</Heading>
 		<span>
 			<div class="inline">Published on <FormattedDate date={pubDate} /></div>
@@ -63,11 +63,12 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 			}
 		</span>
 		{tags && (
-			<ul class="flex justify-center my-1 w-10/12
-				*:rounded-full *:border *:px-2 *:py-0.5 *:m-1
+			<ul class="flex flex-initial flex-wrap justify-center gap-1.5
+				w-10/12 my-2
+				*:rounded-full *:border *:px-2 *:py-0.5
 				text-white *:border-salmon *:bg-salmon/80"
 			>
-				{tags.map(t => <li class="h-fit font-bold capitalize">{t}</li>)}
+				{tags.map(t => <li class="w-fit h-fit font-bold capitalize">{t}</li>)}
 			</ul>
 		)}
 	</div>
