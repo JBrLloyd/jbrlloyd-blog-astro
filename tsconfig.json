@@ -11,6 +11,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@helpers/*": ["src/helpers/*"],
       "@accessors/*": ["src/accessors/*"],
+      "@stores/*": ["src/stores/*"],
     }
   }
 }

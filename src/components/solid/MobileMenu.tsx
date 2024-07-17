@@ -1,9 +1,11 @@
-import { type Component, createSignal } from "solid-js"
+import { type Component } from "solid-js"
+import { useStore } from '@nanostores/solid';
 
 import { sortedAllStaticRoutes, type RouteKey } from '../../routes'
 import { NavigationLink } from './blocks/NavigationLink'
 import { HamburgerMenuButton } from './HamburgerMenuButton'
 import { NavIcon, type NavIconType } from "./icons/NavIcon"
+import { mobileNavSidebarIsOpen } from "@stores/navigationStore";
 
 const RouteNavIconTypeMap: Record<RouteKey, NavIconType> = {
   'home': 'home',
@@ -12,23 +14,23 @@ const RouteNavIconTypeMap: Record<RouteKey, NavIconType> = {
 }
 
 export const MobileMenu: Component = () => {
-  const [isSideDrawerOpen, setIsSideDrawerOpen] = createSignal(false);
+  const $mobileNavSidebarIsOpen  = useStore(mobileNavSidebarIsOpen);
 
   const toggleSideDrawer = () => {
-    setIsSideDrawerOpen(prev => !prev)
+    mobileNavSidebarIsOpen.set(!$mobileNavSidebarIsOpen());
   }
 
   return (
     <>
-      <div class={"z-50 w-full h-screen fixed inset-0" + (isSideDrawerOpen() ? '' : ' invisible')}>
+      <div class={"z-50 w-full h-screen fixed inset-0" + ($mobileNavSidebarIsOpen() ? '' : ' invisible')}>
         <div
           class={"absolute w-full h-full duration-500 ease-out transition-all inset-0 bg-gray-900"
-            + (isSideDrawerOpen() ? ' opacity-50' : ' opacity-0')}
+            + ($mobileNavSidebarIsOpen() ? ' opacity-50' : ' opacity-0')}
           onClick={() => toggleSideDrawer()}
         ></div>
         <div
           class={"absolute w-48 -left-48 sm:w-56 sm:-left-56 h-full bg-white duration-300 ease-out transition-all flex flex-col rounded-r-lg"
-            + (isSideDrawerOpen() ? ' translate-x-full' : '')}
+            + ($mobileNavSidebarIsOpen() ? ' translate-x-full' : '')}
         >
           {sortedAllStaticRoutes()
             .map((route) => (
@@ -48,7 +50,7 @@ export const MobileMenu: Component = () => {
           }
         </div>
       </div>
-      <HamburgerMenuButton isOpen={isSideDrawerOpen()} onClick={() => toggleSideDrawer()} />
+      <HamburgerMenuButton isOpen={$mobileNavSidebarIsOpen()} onClick={() => toggleSideDrawer()} />
     </>
   )
 }
