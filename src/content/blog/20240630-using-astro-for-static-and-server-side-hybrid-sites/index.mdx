@@ -305,10 +305,27 @@ export default const ReactCounter : FunctionComponent = () => {
 import SolidJsCounter from '../components/solid/SolidJsCounter.tsx';
 import ReactCounter from '../components/react/ReactCounter.tsx';
 ---
-<>
+<div id="wrapper">
 	<SolidJsCounter client:only="solid-js" />
 	<ReactCounter client:only="react" />
-</>
+</div>
+
+<script>
+	import { count } from '../stores/countStore';
+
+	const wrapper = document.getElementById('wrapper');
+
+	count.subscribe((countVal: number) => {
+		if (!wrapper)
+			return;
+
+		if (count % 2 === 0) {
+			wrapper.style.backgroundColor = 'blue';
+		} else {
+			wrapper.style.backgroundColor = 'green';
+		}
+	})
+</script>
 ```
 
 ## SSR Adaptors
