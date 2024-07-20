@@ -13,22 +13,6 @@ export const ProfileSummary: Component = () => (
         height={180}
         width={180}
       />
-      {/* <StaticImage
-        layout="constrained"
-        src="../images/jbrlloyd-profile-pic.jpg"
-        width={180}
-        height={180}
-        alt="Profile picture"
-        placeholder="blurred"
-        className="rounded-full shadow-2xl"
-        imgStyle={{
-          transform: "scaleX(-1)"
-        }}
-        imgClassName="border-solid rounded-full"
-        transformOptions={{
-          grayscale: true,
-        }}
-      /> */}
     </div>
     <h3><strong>Jackson Lloyd</strong></h3>
     <h4><pre>Software | Leadership | DevOps</pre></h4>
