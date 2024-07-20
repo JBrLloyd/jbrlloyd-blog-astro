@@ -1,0 +1,33 @@
+<button
+  id="hamburger-menu-btn"
+  title="Menu Icon"
+  class=`first-letter:text-gray-500 focus:outline-none shadow-md border border-gray-200 rounded-2xl p-3 max-sm:p-1.5`
+>
+  <div class="flex flex-col flex-nowrap gap-y-1 items-center justify-center align-middle w-[32px] h-[30px]">
+    <span
+      aria-hidden="true"
+      class="block h-[3px] sm:h-[4px]  w-[32px] bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
+    ></span>
+    <span
+      aria-hidden="true"
+      class="block h-[3px] sm:h-[4px] w-[32px] bg-current rounded-full transform transition duration-300 ease-in-out"
+    ></span>
+    <span
+      aria-hidden="true"
+      class="block h-[3px] sm:h-[4px] w-[32px] bg-current rounded-full transform transition delay-50 duration-300 ease-in-out"
+    ></span>
+  </div>
+</button>
+
+<script>
+  import { toggleMobileNavSidebar } from "@stores/navigationStore";
+  const hamburgerMenuBtn = document.getElementById('hamburger-menu-btn');
+
+  const onClick = () => {
+    toggleMobileNavSidebar();
+  }
+
+  if (hamburgerMenuBtn) {
+    hamburgerMenuBtn.addEventListener('click', onClick);
+  }
+</script>
