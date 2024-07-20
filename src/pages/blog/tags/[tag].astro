@@ -1,0 +1,45 @@
+---
+import type { InferGetStaticParamsType, GetStaticPaths } from 'astro';
+
+import PageLayout from '@layouts/PageLayout.astro';
+import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '@src/consts';
+import { getBlogPosts } from '@accessors/astro/blogAccessor';
+import BlogPostsList from '@src/components/BlogPostsList.astro';
+import TagPill from '@src/components/TagPill.astro';
+
+export const getStaticPaths = (async () => {
+	const posts = await getBlogPosts();
+
+	const tags = posts
+		.filter(p => !!p.data.tags)
+		.flatMap(p => p.data.tags)
+		.filter(t => !!t && t.toLocaleLowerCase() !== 'blog') as string[]
+
+	const distinctTags = [...new Set(tags)]
+
+	return distinctTags.map(t => ({
+		params: { tag: t }
+	}))
+}) satisfies GetStaticPaths;
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params
+
+const allBlogPosts = await getBlogPosts()
+const relatedBlogPosts = allBlogPosts
+	.filter(p => !!p.data.tags && p.data.tags.some(t => t.toLocaleLowerCase() === tag.toLowerCase()))
+---
+
+<PageLayout
+	title={SITE_TITLE}
+	subTitle={SITE_SUBTITLE}
+	description={SITE_DESCRIPTION}
+	isArticle={true}
+>
+	<span class="*:inline-block">
+		<p><b>Posts related to:&nbsp;</b></p>
+		<TagPill tag={tag} />
+	</span>
+	<BlogPostsList posts={relatedBlogPosts} />
+</PageLayout>

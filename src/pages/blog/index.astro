@@ -4,6 +4,7 @@ import PageLayout from '@layouts/PageLayout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import Heading from '@components/solid/blocks/Heading';
 import { getBlogPosts } from '@accessors/astro/blogAccessor';
+import BlogPostsList from '@src/components/BlogPostsList.astro';
 
 const posts = await getBlogPosts();
 
@@ -14,38 +15,9 @@ const posts = await getBlogPosts();
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 	bannerMessage='🎺 Upcoming Post: "Setting up Dapr & NATS Locally For Fast Distributed Messaging" 🎺'
-	}>
+	}
+>
 	<section class="flex justify-center">
-		<ul class="flex flex-col items-center">
-			{
-				posts.map((post) => (
-					<li class="my-6 max-w-[26rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
-						<a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}`}>
-							<img
-								class="
-									max-h-fit
-									relative
-									cursor-pointer
-									filter
-									mx-auto
-									transition-all duration-150
-									rounded-t-md"
-								src={post.data.heroImage}
-								alt=""
-							/>
-
-							<div class="text-center px-4 py-1 pb-3">
-								<Heading size="2xl" className="pt-2">{post.data.title}</Heading>
-								<em><FormattedDate date={post.data.pubDate} /></em>
-								<p class="pt-2.5">
-									{post.data.description}
-								</p>
-							</div>
-
-						</a>
-					</li>
-				))
-			}
-		</ul>
+		<BlogPostsList posts={posts} />
 	</section>
 </PageLayout>

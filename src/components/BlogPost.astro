@@ -3,6 +3,7 @@ import { type SortedBlogPost, getBlogEntryBySlugOrId } from '@accessors/astro/bl
 import FormattedDate from './FormattedDate.astro';
 import { Heading, NavigationLink } from "@solidComponents/blocks";
 import { getRouteDetails } from "../routes";
+import TagPill from './TagPill.astro';
 
 type Props = SortedBlogPost['data'] & {
 	previousPostSlug: SortedBlogPost['previousPostSlug']
@@ -64,12 +65,14 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 			}
 		</span>
 		{blogPostTags && (
-			<ul class="flex flex-initial flex-wrap justify-center gap-1.5
-				w-10/12 my-2
-				*:rounded-full *:border *:px-2 *:py-0.5
-				text-white *:border-salmon *:bg-salmon/80"
-			>
-				{blogPostTags.map(t => <li class="w-fit h-fit font-bold capitalize">{t}</li>)}
+			<ul class="flex flex-initial flex-wrap justify-center gap-1.5 w-10/12 my-2">
+				{blogPostTags.map(t => (
+					<li>
+						<a href={`/blog/tags/${t}`}>
+							<TagPill tag={t} />
+						</a>
+					</li>
+				))}
 			</ul>
 		)}
 	</div>
