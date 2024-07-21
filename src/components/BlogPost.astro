@@ -94,6 +94,7 @@ const blogPostSeries = await getBlogPostSeries(series);
 			w-full
 			overflow-hidden
 			prose
+			max-w-7xl
 			before:[&_blockquote_p:first-of-type]:content-none
 			after:[&_blockquote_p:last-of-type]:content-noneprose-blockquote:prose-quoteless
 			prose-li:m-0
@@ -108,6 +109,9 @@ const blogPostSeries = await getBlogPostSeries(series);
 			prose-code:px-1 prose-code:py-[1px] prose-code:rounded-md
 			[&>blockquote>p]:my-1.5
 			[&>p_img]:my-0
+			[&>p_img]:w-fit
+			[&>p_img]:mx-auto
+			[&>p:has(img)]:text-center
 		">
 
 			<slot />
