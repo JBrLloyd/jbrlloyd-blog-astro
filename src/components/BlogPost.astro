@@ -35,7 +35,6 @@ const blogPostSeries = await getBlogPostSeries(series);
 
 <article
 	class="
-		w-full
 		[&>img]:max-h-80
 		[&>img]:relative
 		flex
@@ -45,7 +44,7 @@ const blogPostSeries = await getBlogPostSeries(series);
 >
 
 	{heroImage && <img src={heroImage} alt="" />}
-	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center w-full">
+	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center">
 		<Heading size='3xl' className='py-2' >{title}</Heading>
 		<span>
 			<div class="inline">Published on <FormattedDate date={pubDate} /></div>
@@ -62,6 +61,7 @@ const blogPostSeries = await getBlogPostSeries(series);
 				)
 			}
 		</span>
+
 		{blogPostTags && (
 			<ul class="flex flex-initial flex-wrap justify-center gap-1.5 w-10/12 my-2">
 				{blogPostTags.map(t => (
@@ -91,8 +91,8 @@ const blogPostSeries = await getBlogPostSeries(series);
 
 	<div
 		class="
-			overflow-hidden
 			w-full
+			overflow-hidden
 			prose
 			before:[&_blockquote_p:first-of-type]:content-none
 			after:[&_blockquote_p:last-of-type]:content-noneprose-blockquote:prose-quoteless

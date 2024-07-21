@@ -48,7 +48,6 @@ const { title, subTitle } = Astro.props;
 
 <script>
 	const header = document.getElementById("header");
-	const navbarWrapper = document.getElementById("navbar-wrapper");
 	const intercept = document.createElement("div");
 
 	intercept.setAttribute("data-observer-intercept", "");
@@ -56,6 +55,19 @@ const { title, subTitle } = Astro.props;
 
 	const observer = new IntersectionObserver(([entry]) => {
 		header?.toggleAttribute("data-scrolled", !entry.isIntersecting);
+	});
+
+	observer.observe(intercept);
+</script>
+
+<script>
+	const navbarWrapper = document.getElementById("navbar-wrapper");
+	const intercept = document.createElement("div");
+
+	intercept.setAttribute("data-observer-intercept", "");
+	navbarWrapper?.before(intercept);
+
+	const observer = new IntersectionObserver(([entry]) => {
 		navbarWrapper?.toggleAttribute("data-scrolled", !entry.isIntersecting);
 	});
 

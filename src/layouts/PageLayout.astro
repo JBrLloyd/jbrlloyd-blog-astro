@@ -15,6 +15,7 @@ type Props = {
   description: string
   isArticle?: boolean
   bannerMessage?: string
+  displaySidebar?: boolean
 };
 
 const {
@@ -22,7 +23,8 @@ const {
   subTitle,
   description,
   isArticle = false,
-  bannerMessage
+  bannerMessage,
+  displaySidebar = true,
 } = Astro.props;
 
 ---
@@ -49,20 +51,22 @@ const {
 
       <main class="flex flex-col lg:flex-row pb-3 justify-center">
 
-        <aside class="sm:p-5 max-w-xs relative grow-0 text-center lg:self-start self-center max-lg:order-2">
-          <Sidebar />
-        </aside>
+        {displaySidebar && (
+          <aside class="sm:p-5 max-w-xs relative grow-0 text-center lg:self-start self-center max-lg:order-2">
+            <Sidebar />
+          </aside>
+        )}
 
         <div
-          class="
+          class={`
             bg-white
             relative
             sm:-mt-10 sm:mx-8
             h-[0%]
-            max-w-4xl
             min-w-full sm:min-w-[36rem] md:min-w-[42rem]
-            transition-all duration-300 delay-50"
-        >
+            transition-all duration-300 delay-50`
+            + (displaySidebar ? " max-w-6xl" : "")
+        }>
           {bannerMessage && (
             <div
               id="content-banner"
