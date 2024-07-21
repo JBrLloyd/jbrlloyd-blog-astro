@@ -1,0 +1,33 @@
+---
+import Sidebar from "@src/components/Sidebar.astro";
+import Layout, { type BaseLayoutProps } from "./BaseLayout.astro";
+import { getBlogPosts } from "@accessors/astro/blogAccessor";
+import BlogPostsList from "@src/components/BlogPostsList.astro";
+
+type Props = BaseLayoutProps;
+
+const posts = await getBlogPosts();
+const recentPosts = posts.slice(0, 3);
+
+---
+
+<Layout {...Astro.props}>
+  <aside
+    slot="sidebar"
+    class="sm:p-5 max-w-xs relative grow-0 text-center self-center max-lg:order-2"
+  >
+    <Sidebar />
+  </aside>
+
+  <slot />
+
+  <div
+    slot="after-content"
+    class=""
+  >
+    <p class="pb-3"><b>Recent Posts</b></p>
+    <div class="flex justify-center">
+      <BlogPostsList posts={recentPosts} />
+    </div>
+  </div>
+</Layout>

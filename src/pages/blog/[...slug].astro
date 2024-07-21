@@ -1,5 +1,5 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '@src/consts';
 
 import { getBlogPosts } from '@accessors/astro/blogAccessor';
@@ -20,12 +20,11 @@ const { Content } = await post.render();
 const readingTimeMins = avgReadingTimeMins(post.body);
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 	isArticle={true}
-	displaySidebar={false}
 >
 	<BlogPost
 		readingTimeMins={readingTimeMins}
@@ -35,4 +34,4 @@ const readingTimeMins = avgReadingTimeMins(post.body);
 	>
 		<Content />
 	</BlogPost>
-</PageLayout>
+</Layout>

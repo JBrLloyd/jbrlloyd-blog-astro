@@ -1,10 +1,10 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import { Heading, Paragraph } from "@solidComponents/blocks";
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
@@ -13,4 +13,4 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 		<Heading size="2xl">500: Error</Heading>
     <Paragraph>There was an error. Please try again later.</Paragraph>
 	</section>
-</PageLayout>
+</Layout>

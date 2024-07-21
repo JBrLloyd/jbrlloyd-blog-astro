@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+import Footer from '@components/Footer.astro';
+import { ScrollTopButton } from '@solidComponents/ScrollTopButton.tsx';
+
+import bannerImage from '../images/jbrlloyd-banner.png';
+
+export type BaseLayoutProps = Props;
+
+type Props = {
+  title: string
+  subTitle: string | undefined
+  description: string
+  isArticle?: boolean
+  bannerMessage?: string
+};
+
+const {
+  title,
+  subTitle,
+  description,
+  isArticle = false,
+  bannerMessage,
+} = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} isArticle={isArticle} />
+	</head>
+
+	<body>
+
+    <section class="flex flex-col bg-[#fafafa]">
+
+      <Header title={title} subTitle={subTitle} />
+
+      <figure class="bg-salmon h-48 flex justify-center">
+        <Image
+          src={bannerImage}
+          class="h-full w-auto"
+          alt="A description of my image."
+        />
+      </figure>
+
+      <main class="flex flex-col lg:flex-row pb-3 justify-center">
+
+        <slot name="sidebar" />
+
+        <div class="flex flex-col md:gap-10 gap-20">
+
+          <div
+            class={`h-fit bg-white relative sm:-mt-10 sm:mx-8
+              transition-all duration-300 delay-50`
+              + (Astro.slots.has('sidebar') ? " max-w-6xl" : "")
+          }>
+            {bannerMessage && (
+              <div
+                id="content-banner"
+                class="
+                  max-md:-mt-6
+                  min-h-6
+                  text-center bg-[#5f6d4c]
+                  text-white flex flex-row
+                  p-1 place-items-center"
+              >
+                <p class="ml-auto sm:px-3">{bannerMessage}</p>
+                <button
+                  id="close-content-banner-btn"
+                  class="
+                    ml-auto rounded-sm
+                    px-2 py-1 h-fit w-fit
+                    m-1 border select-none"
+                >
+                  <b>X</b>
+                </button>
+              </div>
+            )}
+  
+  
+            <div class="sm:border-2">
+              <div class="sm:mx-6 max-sm:mx-2 py-7">
+  
+                <slot />
+  
+              </div>
+            </div>
+          </div>
+  
+          {Astro.slots.has('after-content') && (
+            <div class="sm:border-2 bg-white relative sm:mx-8">
+              <div class="sm:mx-6 max-sm:mx-2 py-7">
+                <slot name="after-content" />
+              </div>
+            </div>
+          )}
+        </div>
+
+      </main>
+
+      <footer class="flex-auto bg-white py-3 border-t">
+        <Footer />
+      </footer>
+
+    </section>
+
+    <div class="fixed bottom-9 right-9">
+      <ScrollTopButton client:only="solid-js" />
+    </div>
+	</body>
+</html>
+
+<script>
+  const closeBtn = document.getElementById('close-content-banner-btn');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', onClick)
+  }
+
+  function onClick() {
+    closeContentBanner()
+    closeBtn?.removeEventListener('click', onClick)
+  }
+
+  function closeContentBanner() {
+    const contentBanner = document.getElementById('content-banner');
+
+    if (contentBanner)
+      contentBanner.style.display = 'none'
+  }
+</script>
+
+<script>
+  import { mobileNavSidebarIsOpen } from "@stores/navigationStore";
+
+  mobileNavSidebarIsOpen.subscribe((isOpen: boolean) => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.scrollbarWidth = 'none';
+    } else {
+      document.body.style.overflow = 'visible';
+      document.body.style.scrollbarWidth = 'auto';
+    }
+  })
+</script>

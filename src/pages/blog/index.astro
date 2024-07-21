@@ -1,8 +1,6 @@
 ---
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
-import PageLayout from '@layouts/PageLayout.astro';
-import FormattedDate from '@components/FormattedDate.astro';
-import Heading from '@components/solid/blocks/Heading';
+import Layout from '@layouts/BaseLayout.astro';
 import { getBlogPosts } from '@accessors/astro/blogAccessor';
 import BlogPostsList from '@src/components/BlogPostsList.astro';
 
@@ -10,14 +8,14 @@ const posts = await getBlogPosts();
 
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
 	bannerMessage='🎺 Upcoming Post: "Setting up Dapr & NATS Locally For Fast Distributed Messaging" 🎺'
 	}
 >
-	<section class="flex justify-center">
+	<section class="flex justify-center max-w-6xl">
 		<BlogPostsList posts={posts} />
 	</section>
-</PageLayout>
+</Layout>

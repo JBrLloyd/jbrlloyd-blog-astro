@@ -1,12 +1,12 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import { Heading, Paragraph, BlockQuote } from "@solidComponents/blocks";
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 
 const siteUrl = Astro.site
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
@@ -74,4 +74,4 @@ const siteUrl = Astro.site
       Visitor comments may be checked through an automated spam detection service.
     </Paragraph>
   </article>
-</PageLayout>
+</Layout>

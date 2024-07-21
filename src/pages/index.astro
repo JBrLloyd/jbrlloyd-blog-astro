@@ -1,10 +1,10 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro';
+import Layout from '@layouts/HomePageLayout.astro';
 import { Heading, Paragraph, BlockQuote } from "@solidComponents/blocks";
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
@@ -44,4 +44,4 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../consts';
 			authour="Winston Churchill"
 		/>
 	</article>
-</PageLayout>
+</Layout>
