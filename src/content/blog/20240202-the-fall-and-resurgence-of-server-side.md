@@ -9,8 +9,8 @@ category: web development
 subCategory: frontend
 tags:
   - blog
-  - web-development
   - frontend
+  - web
 ---
 Many web developers have been in the world of server side render sites using PHP (think WordPress), where the entire HTML document is generated and served from a server, these document would include some client side JavaScript (JS), Cascading Style Sheets (CSS) and instruct to download other assets such as fonts, images, etc. But more recently we've had the surge of heavier static client side sites, which allowed web developers to take advantage of the more powerful devices such as mobiles, without having heavy servers. This was not only cost efficient for the app creators to host their applications but also allowed for a new wave of ideas such as Backend for Frontend (BFF), allowing reusable backend APIs to be built which could serve a browser site or mobile apps, and Single Page Applications (SPAs), where sites could avoid routed pages and instead update the client side to change the user interface (UI) to seem like you were navigating to a new page, but instead re-rendering the entire DOM, which allowed state to remain cached and faster navigating and new screen display.
 

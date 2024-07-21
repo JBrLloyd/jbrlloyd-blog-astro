@@ -10,9 +10,9 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<ul class="flex flex-col items-center">
+<ul class="flex flex-wrap gap-y-10 gap-x-10 items-baseline justify-center">
   {posts.map((post) => (
-      <li class="my-6 max-w-[26rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
+      <li class="max-w-[20rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
         <a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}`}>
           <img
             class="
@@ -27,10 +27,10 @@ const { posts } = Astro.props;
             alt=""
           />
 
-          <div class="text-center px-4 py-1 pb-3">
-            <Heading size="2xl" className="pt-2">{post.data.title}</Heading>
-            <em><FormattedDate date={post.data.pubDate} /></em>
-            <p class="pt-2.5">
+          <div class="px-4 py-1 pb-3">
+            <Heading size="xl" className="pt-2">{post.data.title}</Heading>
+            <em class="text-sm"><FormattedDate date={post.data.pubDate} /></em>
+            <p class="pt-3">
               {post.data.description}
             </p>
           </div>

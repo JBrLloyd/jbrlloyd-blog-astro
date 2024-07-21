@@ -4,7 +4,7 @@ import { NavigationLink } from "@solidComponents/blocks";
 import SocialIcon, { socialIcons } from '@solidComponents/icons/SocialIcon'
 ---
 
-<aside class="divide-y flex flex-col">
+<div class="divide-y flex flex-col">
   <ProfileSummary />
   <div class="items-center justify-center py-8">
     <NavigationLink href="https://www.buymeacoffee.com/jbrlloyd">
@@ -17,4 +17,4 @@ import SocialIcon, { socialIcons } from '@solidComponents/icons/SocialIcon'
       {socialIcons.map(s => <SocialIcon client:only="solid-js" socialType={s} className="px-1" />)}
     </div>
   </div>
-</aside>
+</div>

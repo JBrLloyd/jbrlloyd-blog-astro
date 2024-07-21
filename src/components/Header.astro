@@ -12,41 +12,43 @@ const { title, subTitle } = Astro.props;
 
 ---
 
-<header
-	id="header"
-	class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 flex md:flex md:flex-col md:flex-nowrap
-		items-center bg-white
-		max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
-	"
->
-	<div class="flex flex-col items-center max-md:order-2 max-md:m-auto">
-		<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string} >
-			<h1
-				class="text-4xl text-center font-bold max-sm:text-2xl
-				transition-all duration-300"
-			>
-				{title}
-			</h1>
-		</NavigationLink>
-		{subTitle && <p class="text-base pt-1 mm:pt-3.5 italic subpixel-antialiased max-sm:hidden md:border-b px-3">{subTitle}</p>}
-	</div>
+<>
+	<header
+		id="header"
+		class="max-md:top-0 max-md:sticky z-10 max-md:py-1.5 md:pt-8 pb-2.5 flex md:flex md:flex-col md:flex-nowrap
+			items-center bg-white
+			max-md:data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in
+		"
+	>
+		<div class="flex flex-col items-center content-around max-md:mr-auto max-md:ml-3">
+			<NavigationLink href="/" getCurrentPath={() => Astro.url.pathname as string}>
+				<h1
+					class="text-4xl text-center font-bold max-sm:text-2xl
+					transition-all duration-300"
+				>
+					{title}
+				</h1>
+			</NavigationLink>
+			{subTitle && <p class="text-base pt-1 mm:pt-3.5 italic subpixel-antialiased max-sm:hidden md:border-b px-3">{subTitle}</p>}
+		</div>
 
-	<nav class="">
-
-		<div class="md:hidden pl-8 max-sm:pl-2">
+		<nav class="md:hidden mr-8 max-sm:mr-2">
 			<MobileNavMenu />
-		</div>
+		</nav>
+	</header>
 
-		<div class="max-md:hidden text-lg select-none flex-row items-center align-middle mt-2">
-			<NavBar />
-		</div>
-
+	<nav
+		id="navbar-wrapper"
+		class="max-md:hidden text-lg flex-row items-center align-middle z-10 top-0 sticky w-full
+			bg-white text-center data-[scrolled]:shadow-[0_5px_20px_10px_rgba(25,25,25,.5)] transition-shadow ease-in"
+	>
+		<NavBar />
 	</nav>
-
-</header>
+</>
 
 <script>
 	const header = document.getElementById("header");
+	const navbarWrapper = document.getElementById("navbar-wrapper");
 	const intercept = document.createElement("div");
 
 	intercept.setAttribute("data-observer-intercept", "");
@@ -54,6 +56,7 @@ const { title, subTitle } = Astro.props;
 
 	const observer = new IntersectionObserver(([entry]) => {
 		header?.toggleAttribute("data-scrolled", !entry.isIntersecting);
+		navbarWrapper?.toggleAttribute("data-scrolled", !entry.isIntersecting);
 	});
 
 	observer.observe(intercept);

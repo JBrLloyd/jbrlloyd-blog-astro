@@ -1,5 +1,5 @@
 ---
-import { type SortedBlogPost, getBlogEntryBySlugOrId } from '@accessors/astro/blogAccessor';
+import { type SortedBlogPost, getBlogEntryBySlugOrId, getBlogPostSeries } from '@accessors/astro/blogAccessor';
 import FormattedDate from './FormattedDate.astro';
 import { Heading, NavigationLink } from "@solidComponents/blocks";
 import { getRouteDetails } from "../routes";
@@ -20,7 +20,8 @@ const {
 	readingTimeMins,
 	previousPostSlug,
 	nextPostSlug,
-	tags
+	tags,
+	series
 } = Astro.props;
 
 const blogPath = getRouteDetails('blog').link
@@ -28,6 +29,8 @@ const blogPostTags = tags?.filter(t => t !== 'blog');
 
 const nextBlogPostDetails = await getBlogEntryBySlugOrId(nextPostSlug);
 const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
+
+const blogPostSeries = await getBlogPostSeries(series);
 ---
 
 <article
@@ -40,11 +43,6 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 		justify-center
 		items-center"
 >
-	<div
-		class="inline-flex flex-row flex-nowrap place-items-center w-full
-			*:py-2 *:px-6 *:text-center -mt-4 flex-grow-0">
-		<NavigationLink href={blogPath} className="m-auto">All Posts</NavigationLink>
-	</div>
 
 	{heroImage && <img src={heroImage} alt="" />}
 	<div class="flex flex-col pt-5 pb-2 text-center border-b mb-6 items-center w-full">
@@ -76,6 +74,20 @@ const prevBlogPostDetails = await getBlogEntryBySlugOrId(previousPostSlug);
 			</ul>
 		)}
 	</div>
+
+	{blogPostSeries && blogPostSeries.length > 1 && (
+		<div class="pb-8 pt-2">
+			<h3>This blog is part of a series <b>'{series}'</b>:</h3>
+			<ol>{blogPostSeries.map((p, idx) => (
+				<li>
+					<NavigationLink href={`/blog/${p.slug}`}  getCurrentPath={() => Astro.url.pathname as string}>
+						{idx + 1}. {p.data.title}
+					</NavigationLink>
+				</li>
+			))}
+			</ol>
+		</div>
+	)}
 
 	<div
 		class="

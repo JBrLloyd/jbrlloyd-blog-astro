@@ -2,8 +2,8 @@ import { type Component } from "solid-js"
 import profileImage from "../../images/jbrlloyd-profile-pic.jpg";
 
 export const ProfileSummary: Component = () => (
-  <div class="flex flex-col items-center justify-center py-8">
-    <div class="pb-2 border-solid rounded-full">
+  <div class="flex flex-col items-center justify-center gap-1 py-8">
+    <div class="pb-4 border-solid rounded-full">
       <img
         loading="lazy"
         decoding="async"

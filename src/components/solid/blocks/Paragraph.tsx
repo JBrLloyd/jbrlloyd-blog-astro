@@ -9,7 +9,7 @@ export const Paragraph: ParentComponent<ParagraphProps> = ({ className, ...props
   const c = children(() => props.children);
 
   return (
-    <p class={"pb-1 " + className} {...props}>{c()}</p>
+    <p class={"pb-3 " + className} {...props}>{c()}</p>
   )
 }
 
