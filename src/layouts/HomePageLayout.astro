@@ -3,6 +3,7 @@ import Sidebar from "@src/components/Sidebar.astro";
 import Layout, { type BaseLayoutProps } from "./BaseLayout.astro";
 import { getBlogPosts } from "@accessors/astro/blogAccessor";
 import BlogPostsList from "@src/components/BlogPostsList.astro";
+import { Heading } from "@src/components/solid/blocks";
 
 type Props = BaseLayoutProps;
 
@@ -25,9 +26,9 @@ const recentPosts = posts.slice(0, 3);
     slot="after-content"
     class=""
   >
-    <p class="pb-3"><b>Recent Posts</b></p>
+    <Heading size="2xl"><b>Recent Posts</b></Heading>
     <div class="flex justify-center">
-      <BlogPostsList posts={recentPosts} />
+      <BlogPostsList posts={recentPosts} gapX={5} />
     </div>
   </div>
 </Layout>

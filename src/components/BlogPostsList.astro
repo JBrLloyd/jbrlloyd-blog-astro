@@ -5,12 +5,13 @@ import type { SortedBlogPost } from '@accessors/astro/blogAccessor';
 
 interface Props {
   posts: SortedBlogPost[]
+  gapX?: number
 }
 
-const { posts } = Astro.props;
+const { posts, gapX = 10 } = Astro.props;
 ---
 
-<ul class="flex flex-wrap gap-y-10 gap-x-10 items-baseline justify-center">
+<ul class={`flex flex-wrap gap-y-10 gap-x-${gapX} items-baseline justify-center`}>
   {posts.map((post) => (
       <li class="max-w-[20rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
         <a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}`}>

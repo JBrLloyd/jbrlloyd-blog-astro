@@ -1,7 +1,7 @@
 ---
 import type { InferGetStaticParamsType, GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
-import PageLayout from '@layouts/PageLayout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '@src/consts';
 import { type SortedBlogPost, getBlogPostsTagsLookup } from '@accessors/astro/blogAccessor';
 import BlogPostsList from '@src/components/BlogPostsList.astro';
@@ -32,7 +32,7 @@ const { tag } = Astro.params as Params
 const { posts } = Astro.props as Props;
 ---
 
-<PageLayout
+<Layout
 	title={SITE_TITLE}
 	subTitle={SITE_SUBTITLE}
 	description={SITE_DESCRIPTION}
@@ -45,4 +45,4 @@ const { posts } = Astro.props as Props;
 	<div class="pt-5">
 		<BlogPostsList posts={posts} />
 	</div>
-</PageLayout>
+</Layout>
