@@ -1,5 +1,5 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
-const isProd = import.meta.env.PROD;
+import { locals } from '@src/stores/localsStore';
 
 type BlogPostData = CollectionEntry<'blog'>;
 
@@ -13,8 +13,9 @@ export const getBlogEntryBySlugOrId = async (id: string | null) => {
 
 export const getAllBlogPosts = async () => await getCollection('blog',
   (p) => {
+    const vars = locals.get();
     // Only apply filtering of posts to production app
-    return !isProd
+    return !vars.PROD
       || (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx')
   })
 
