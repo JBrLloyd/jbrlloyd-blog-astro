@@ -1,5 +1,5 @@
 [env.staging.vars]
-PROD = false
+# PROD = false
 
 [env.production.vars]
 PROD = true
