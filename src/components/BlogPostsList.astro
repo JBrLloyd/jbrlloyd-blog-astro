@@ -11,7 +11,7 @@ interface Props {
 const { posts, gapX = 10 } = Astro.props;
 ---
 
-<ul class={`flex flex-wrap gap-y-10 gap-x-${gapX} items-baseline justify-center`}>
+<ul class={`flex flex-auto flex-wrap gap-y-10 gap-x-5 items-baseline justify-center`}>
   {posts.map((post) => (
       <li class="max-w-[20rem] shadow-lg active:shadow-2xl hover:shadow-2xl rounded-md">
         <a class="active:first:saturate-[1.85] hover:first:saturate-[1.85]" href={`/blog/${post.slug}`}>

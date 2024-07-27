@@ -1,12 +1,12 @@
 ---
 draft: true
 title: Becoming a Great Team Leader
-description: 
+description: What understandings and responsibility does it take to be a great team leader? Learn from my advice and experience.
 pubDate: 2024-07-25
 author: Jackson Lloyd
 heroImage: /blog-placeholder-1.jpg
 category: leadership
-subCategory: 
+subCategory: team management
 tags:
   - blog
   - leadership
@@ -58,5 +58,9 @@ These team processes should also be continuously improved for more effectiveness
 Your success should not be based off what you can produce as an individual or individual milestones and successes, instead your success should be based off your team's success. Aligning your successes with the team will ensure you're able to set your team up for success.
 
 ## Communication
+
+Communication is arguable the most important 
+
+## Empathy with Directness
 
 Communication is arguable the most important 
