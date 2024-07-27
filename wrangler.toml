@@ -1,5 +1,2 @@
-[env.staging.vars]
-# PROD = false
-
-[env.production.vars]
-# PROD = true
+[vars]
+SHOW_DRAFTS = true

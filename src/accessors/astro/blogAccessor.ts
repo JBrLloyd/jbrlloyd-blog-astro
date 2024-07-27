@@ -15,7 +15,7 @@ export const getAllBlogPosts = async () => await getCollection('blog',
   (p) => {
     const vars = envVars.get();
     // Only apply filtering of posts to production app
-    return !vars.PROD
+    return !vars.SHOW_DRAFTS
       || (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx')
   })
 

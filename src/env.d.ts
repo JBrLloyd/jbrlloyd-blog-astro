@@ -3,7 +3,7 @@
 import type { AdvancedRuntime } from '@astrojs/cloudflare'
 
 type AdditionalEnvVars = {
-  PROD?: boolean
+  SHOW_DRAFTS?: boolean
 }
 
 type Runtime = import('@astrojs/cloudflare').Runtime<AdditionalEnvVars>;
