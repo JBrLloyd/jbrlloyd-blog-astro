@@ -18,7 +18,7 @@ tags:
 
 [Astro](https://astro.build) is another JavaScript (JS) web framework for creating incredibly fast, sites.
 Astro is opinionated to optimise speed and improved SEO (Search Engine Optimisation) rating.
-It does this by rendering components server side, minimising client side JS required for the site as possible and improving the SEO by sending HTML before sending required JavaScript, if any. I've talked about the performance gains from a hybrid of client side and server side rendering before in a previous blog post [The Fall & Resurgence of Server Side](20240202-the-fall-and-resurgence-of-server-side).
+It does this by rendering components server side, minimising client side JS required for the site as possible and improving the SEO by sending HTML before sending required JavaScript, if any. I've talked about the performance gains from a hybrid of client side and server side rendering before in a previous blog post [The Fall & Resurgence of Server Side](../20240202-the-fall-and-resurgence-of-server-side).
 
 Astro allows you to plugin and use any major UI framework such as React, Vue, Preact, Svelte and SolidJs.
 These frameworks are an opt-in integrations, which you install and add into Astro config, this integrations will use the specific framework's renderer to create elements. Then taking the HTML output and passing it to Astro to render, this allows any choice of frontend frameworks, which Astro has integrations built for. Lastly, any client side JS can be sent down to the client browser explicitly, this also follows an opt-in approach to prevent excessive JS being sent to the browser taking longer for the site to load, but all the JS will be deferred from being sent until the static content (HTML and CSS) has been sent and painted.
