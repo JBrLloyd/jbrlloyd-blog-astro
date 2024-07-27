@@ -2,10 +2,14 @@
 /// <reference types="astro/client" />
 import type { AdvancedRuntime } from '@astrojs/cloudflare'
 
+type AdditionalEnvVars = {
+  PROD?: boolean
+}
+
+type Runtime = import('@astrojs/cloudflare').Runtime<AdditionalEnvVars>;
+
 declare global {
   namespace App {
-    interface Locals {
-      PROD?: boolean
-    }
+    interface Locals extends Runtime {}
   }
 }

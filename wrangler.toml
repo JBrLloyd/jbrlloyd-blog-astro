@@ -2,4 +2,4 @@
 # PROD = false
 
 [env.production.vars]
-PROD = true
+# PROD = true

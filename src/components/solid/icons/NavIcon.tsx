@@ -1,4 +1,4 @@
-import { type Component, Suspense, lazy } from "solid-js"
+import { type Component } from "solid-js"
 import { SvgIcon, type SvgElementObject } from "./SvgIcon";
 
 export const navIcons = [
