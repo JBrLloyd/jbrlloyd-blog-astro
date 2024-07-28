@@ -2,7 +2,7 @@ name = "blog-jbrlloyd"
 pages_build_output_dir = "./dist"
 
 [vars]
-HIDE_DRAFTS = true
+HIDE_DRAFTS = false
 
 [env.preview.vars]
 HIDE_DRAFTS = true
