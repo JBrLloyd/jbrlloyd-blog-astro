@@ -3,6 +3,8 @@ import { envVars } from '@src/stores/envVarsStore';
 
 type BlogPostData = CollectionEntry<'blog'>;
 
+export const prerender = false;
+
 export const getBlogEntryBySlugOrId = async (id: string | null) => {
   if (!id) {
     return null;
@@ -11,11 +13,13 @@ export const getBlogEntryBySlugOrId = async (id: string | null) => {
   return await getEntry('blog', id);
 }
 
+// Filtering only server side
 export const getAllBlogPosts = async () => await getCollection('blog',
   (p) => {
     const vars = envVars.get();
+    console.log(JSON.stringify(vars))
     // Only apply filtering of posts to production app
-    return !vars.SHOW_DRAFTS
+    return !vars.HIDE_DRAFTS
       || (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx')
   })
 

@@ -67,10 +67,5 @@ export default defineConfig({
     platformProxy: {
       enabled: true
     }
-  }),
-  vite: {
-    define: {
-      "process.env": process.env
-    }
-  }
+  })
 });

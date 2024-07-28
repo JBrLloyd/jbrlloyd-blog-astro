@@ -3,3 +3,7 @@ export const assertUnreachable = (x: never): never => {
 }
 
 export type Flatten<T> = T extends { [K: string]: infer U } ? U : never;
+
+export function nameof<T>(key: keyof T, instance?: T): keyof T {
+    return key;
+}

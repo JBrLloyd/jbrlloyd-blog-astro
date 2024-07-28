@@ -13,6 +13,7 @@
       "@helpers/*": ["src/helpers/*"],
       "@accessors/*": ["src/accessors/*"],
       "@stores/*": ["src/stores/*"],
+      "@api/*": ["src/api/*"],
     }
   }
 }

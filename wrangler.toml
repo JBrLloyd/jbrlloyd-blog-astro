@@ -1,2 +1,5 @@
 [vars]
-SHOW_DRAFTS = true
+HIDE_DRAFTS = false
+
+[env.production.vars]
+HIDE_DRAFTS = true
