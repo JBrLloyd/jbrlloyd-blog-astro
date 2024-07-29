@@ -9,9 +9,12 @@ export const prerender = false;
 const searchTermParamKey = 'search_term';
 const minSearchTermLength = 3;
 
+type BlogPostDataType = BlogPostData['data']
+
 export type GetBlogPostsItem = {
   slug: BlogPostData['slug']
-} & BlogPostData['data']
+  pubDate: string
+} & Omit<BlogPostDataType, 'pubDate'>
 
 export const GET: APIRoute = async ({ request }) => {
   const requestUrl = new URL(request.url);
@@ -54,6 +57,7 @@ export const GET: APIRoute = async ({ request }) => {
           const mapped: GetBlogPostsItem = {
             slug: p.slug,
             ...p.data,
+            pubDate: p.data.pubDate.toISOString()
           }
 
           return mapped;
