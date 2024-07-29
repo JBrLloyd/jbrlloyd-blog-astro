@@ -1,5 +1,6 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
-import { envVars } from '@src/stores/envVarsStore';
+// import { envVars } from '@src/stores/envVarsStore';
+import { HIDE_DRAFTS } from 'astro:env/server';
 
 type BlogPostData = CollectionEntry<'blog'>;
 
@@ -16,10 +17,9 @@ export const getBlogEntryBySlugOrId = async (id: string | null) => {
 // Filtering only server side
 export const getAllBlogPosts = async () => await getCollection('blog',
   (p) => {
-    const vars = envVars.get();
-    console.log(JSON.stringify(vars))
+    console.log(`getAllBlogs - HIDE_DRAFTS ${HIDE_DRAFTS}`)
     // Only apply filtering of posts to production app
-    return !vars.HIDE_DRAFTS
+    return !HIDE_DRAFTS
       || (!p.data.draft && p.slug !== 'markdown-style-guide' && p.slug !== 'using-mdx')
   })
 

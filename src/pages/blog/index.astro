@@ -5,7 +5,6 @@ import { getBlogPosts } from '@accessors/astro/blogAccessor';
 import BlogPostsList from '@src/components/BlogPostsList.astro';
 
 const posts = await getBlogPosts();
-export const prerender = false;
 ---
 
 <Layout

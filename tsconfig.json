@@ -1,6 +1,7 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "verbatimModuleSyntax": true,
     "strictNullChecks": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
@@ -15,5 +16,10 @@
       "@stores/*": ["src/stores/*"],
       "@api/*": ["src/api/*"],
     }
-  }
+  },
+  "plugins": [
+    {
+      "name": "@astrojs/ts-plugin"
+    },
+  ],
 }
