@@ -5,6 +5,7 @@ import BlogPostsList from '@src/components/BlogPostsList.astro';
 import { GET, type GetBlogPostsItem } from '../api/blogPosts';
 import type { PaginatedResponse } from '@src/api/handleRequest';
 
+export const prerender = false;
 
 const response = await GET(Astro);
 const json = await response.json() as PaginatedResponse<GetBlogPostsItem>;
