@@ -3,9 +3,6 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-07-29"
 
 [vars]
-HIDE_DRAFTS = true
-
-[env.preview.vars]
 HIDE_DRAFTS = false
 
 [env.production.vars]
