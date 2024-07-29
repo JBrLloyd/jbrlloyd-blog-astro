@@ -67,11 +67,4 @@ export default defineConfig({
       external: ['node:fs', 'node:child_process--node-compat']
     }
   },
-  experimental: {
-    env: {
-      schema: {
-        HIDE_DRAFTS: envField.boolean({ context: "server", access: "public", optional: true }),
-      }
-    }
-  },
 });
