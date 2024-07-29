@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "HIDE_DRAFTS=true astro check && astro build",
+    "build": "astro check && HIDE_DRAFTS=true astro build",
     "preview:astro": "pnpm run build && astro preview",
     "preview": "HIDE_DRAFTS=true pnpm run build && wrangler pages dev --node-compat --live-reload ./dist",
     "deploy": "pnpm run build && wrangler pages deploy dist --project-name blog-jbrlloyd",
