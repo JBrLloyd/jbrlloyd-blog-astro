@@ -68,6 +68,14 @@ export const handleRequest = async <T>(
   }
 }
 
+export type PaginatedResponse<T> = {
+  total: number
+  pageTotal: number
+  currentPage: number
+  nextPage: number | null
+  data: T[]
+}
+
 export const handlePaginationRequest = async <T>(
   requestUrl: URL,
   dataCallback: () => Promise<T[]>
@@ -107,7 +115,7 @@ const paginateResponse = async <T>(
 
   const pageData = data.slice(startIndex, endIndex)
 
-  return {
+  const result: PaginatedResponse<T> = {
     total: data.length,
     pageTotal: pageData.length,
     currentPage: pageNumber,
@@ -116,4 +124,6 @@ const paginateResponse = async <T>(
       : pageNumber + 1,
     data: pageData,
   };
+
+  return result
 }

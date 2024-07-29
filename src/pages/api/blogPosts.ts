@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import Fuse from 'fuse.js';
-import { getAllBlogPosts, sortPostsByPublishDesc } from "@src/accessors/astro/blogAccessor";
+import { getAllBlogPosts, sortPostsByPublishDesc, type BlogPostData } from "@src/accessors/astro/blogAccessor";
 import { handlePaginationRequest } from '@src/api/handleRequest';
 import { InvalidRequestQueryParameterError } from '@src/api/errors/InvalidRequestQueryParameterError';
 
@@ -9,12 +9,16 @@ export const prerender = false;
 const searchTermParamKey = 'search_term';
 const minSearchTermLength = 3;
 
+export type GetBlogPostsItem = {
+  slug: BlogPostData['slug']
+} & BlogPostData['data']
+
 export const GET: APIRoute = async ({ request }) => {
   const requestUrl = new URL(request.url);
   
   return await handlePaginationRequest(
     requestUrl,
-    async () => {
+    async (): Promise<GetBlogPostsItem[]> => {
       let posts = await getAllBlogPosts();
 
       const searchTermParam = requestUrl.searchParams.get(searchTermParamKey);
@@ -46,10 +50,14 @@ export const GET: APIRoute = async ({ request }) => {
       }
 
       return posts
-        .map(p => ({
-          slug: p.slug,
-          ...p.data,
-        }))
+        .map(p => {
+          const mapped: GetBlogPostsItem = {
+            slug: p.slug,
+            ...p.data,
+          }
+
+          return mapped;
+        })
     }
   )
 }

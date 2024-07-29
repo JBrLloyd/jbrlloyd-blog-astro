@@ -1,7 +1,7 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import { envVars } from '@src/stores/envVarsStore';
 
-type BlogPostData = CollectionEntry<'blog'>;
+export type BlogPostData = CollectionEntry<'blog'>;
 
 export const prerender = false;
 

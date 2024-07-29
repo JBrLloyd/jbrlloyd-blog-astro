@@ -1,10 +1,10 @@
 ---
 import FormattedDate from '@components/FormattedDate.astro';
 import Heading from '@components/solid/blocks/Heading';
-import type { SortedBlogPost } from '@accessors/astro/blogAccessor';
+import type { GetBlogPostsItem } from '@src/pages/api/blogPosts';
 
 interface Props {
-  posts: SortedBlogPost[]
+  posts: GetBlogPostsItem[]
   gapX?: number
 }
 
@@ -37,15 +37,15 @@ const gapXClass: Record<number, string> = {
               mx-auto
               transition-all duration-150
               rounded-t-md"
-            src={post.data.heroImage}
+            src={post.heroImage}
             alt=""
           />
 
           <div class="px-4 py-1 pb-3">
-            <Heading size="xl" className="pt-2">{post.data.title}</Heading>
-            <em class="text-sm"><FormattedDate date={post.data.pubDate} /></em>
+            <Heading size="xl" className="pt-2">{post.title}</Heading>
+            <em class="text-sm"><FormattedDate date={post.pubDate} /></em>
             <p class="pt-3">
-              {post.data.description}
+              {post.description}
             </p>
           </div>
 

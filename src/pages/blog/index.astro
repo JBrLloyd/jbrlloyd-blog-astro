@@ -3,8 +3,12 @@ import { SITE_TITLE, SITE_SUBTITLE, SITE_DESCRIPTION } from '../../consts';
 import Layout from '@layouts/BaseLayout.astro';
 import { getBlogPosts } from '@accessors/astro/blogAccessor';
 import BlogPostsList from '@src/components/BlogPostsList.astro';
+import type { GetBlogPostsItem } from '../api/blogPosts';
+import type { PaginatedResponse } from '@src/api/handleRequest';
 
-const posts = await getBlogPosts();
+const posts = await fetch('api/blogPosts')
+  .then(response => response.json() as Promise<PaginatedResponse<GetBlogPostsItem>>)
+  .then(factData => factData.data);
 ---
 
 <Layout
